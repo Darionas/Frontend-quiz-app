@@ -1,96 +1,122 @@
 /* ---------------- */
-/* Custom properties */
+/* 7. Custom properties */
 /* ---------------- */
 
 :root {
     
-    /* Colors */
+    /* 8.Colors */
+    --clr-white: 0 100% 100%;
+    --clr-black: 0 0% 0%;
+    --clr-grey-50: 220 38% 97%;
+    --clr-grey-5001: 219 13% 44%; 
+    --clr-grey-5002: 219 13% 44%;
+    --clr-blue-50: 225 100% 96%;
+    --clr-blue-100: 220 50% 95%;
+    --clr-blue-300: 216 47% 78%;
+    --clr-blue-500: 223 100% 59%;
+    --clr-blue-850: 215 27% 32%;
+    --clr-blue-900: 216 25% 25%;
+    --clr-blue-950: 214 24% 23%;
+    --clr-green-100: 151 88% 94%;
+    --clr-green-500: 151 68% 52%;
+    --clr-purple-100: 278 100% 95%;
+    --clr-purple-600: 277 91% 56%;
+    --clr-orange-50: 27 100% 96%;
+    --clr-orange-400: 22 100% 60%;
+    --clr-red-500: 0 82% 63%;
+    --clr-slate-700: 200 24% 40%;
     
-    /* Neutrals */
-    --clr-neutral-900: 227 75% 14%;
-    --clr-neutral-800: 226 25% 17%;
-    --clr-neutral-700: 225 23% 24%;
-    --clr-neutral-600: 226 11% 37%; 
-    --clr-neutral-300: 0 0% 78%;
-    --clr-neutral-200: 217 61% 90%;
-    --clr-neutral-100: 0 0% 93%;
-    --clr-neutral-0: 200 60% 99%;
+     /* font-sizes */
+    --fs-144: clamp(3.5rem, 6vw + 1rem, 9rem); /* 88 */
+    --fs-64: 2.2rem; /* 40 */
+    --fs-36: 1.25rem; /* 20 */
+    --fs-28: 1.125rem; /* 18 */
+    --fs-24: 1rem; /* 16 */
+    --fs-20: 0.875rem; /* 14 */
     
-    /* Red */
-    --clr-red-400: 3 86% 64%;
-    --clr-red-500: 3 71% 56%;
-    --clr-red-700: 3 77% 44%;
-    
-    /* Gradient */
-    --background: linear-gradient(180deg, #EBF2FC 0%, #EEFBF9 100%);
-    
-    /* font-sizes */
-    --fs-34: 2.125rem;
-    --fs-20: 1.25rem;
-    --fs-16: 1rem;
     
     /* font-families */
-    --ff-noto-sans: 'Noto Sans', sans-serif;
+    --ff-rubik: "Rubik", sans-serif;
+    
+    /* font-style */
+    --fst-italic: italic;
     
     /* font-weights */
+    --fw-300: 300;
     --fw-400: 400;
     --fw-500: 500;
-    --fw-700: 700;
     
     /* line-heights */
     --lh-1: 1;
     --lh-12: 1.2;
-    --lh-14: 1.4;
+    --lh-15: 1.5;
     
-    /* letter-spacing */
-    --ls-1: -1px;
-    --ls-02: -0.2px;
-    --ls-03: -0.3px;
-    --ls-05: -0.5px;
 }
 
-.darkMode {
-     /* Neutrals */
-    --clr-neutral-900: 200 60% 99%; 
-    --clr-neutral-800: 226 25% 17%;
-    --clr-neutral-700: 225 23% 24%;
-    --clr-neutral-600: 0 0% 78%; 
-    --clr-neutral-300: 226 11% 37%;
-    --clr-neutral-200: 226 11% 37%;
-    --clr-neutral-100: 0 0% 93%;
-    --clr-neutral-0: 226 25% 17%;
-    
-    /* Red */
-    --clr-red-400: 3 86% 64%;
-    --clr-red-500: 3 71% 56%;
-    --clr-red-700: 3 86% 64%; 
 
-    --background: linear-gradient(180deg, #04091B 0%, #091540 100%);
+@media (min-width: 35em) {
+    :root{
+        /* --fs-144: 9rem; */
+        --fs-64: 3rem;
+        --fs-36: 1.75rem;
+        --fs-28: 1.5rem;
+        --fs-24: 1.25rem;
+        --fs-20: 1rem;
+    }
 }
 
-/* ---------------- */
-/* Utility classes */
-/* ---------------- */
+@media (min-width: 45em) {
+    :root{
+        /* --fs-144: 9rem; */
+        --fs-64: 4rem;
+        --fs-36: 2.25rem;
+        --fs-28: 1.75rem;
+        --fs-24: 1.5rem;
+        --fs-20: 1.25rem;
+    }
+}
 
+/* --------------------------*/
+/* 1. Reset in a external file */
+/* --------------------------*/
+
+/* ---------------- */
+/* 2. Utility classes */
+/* ---------------- */
+/*3*/
 .flex {
     display: flex;
+    flex-wrap: wrap;        /*pridejau*/
     gap: var(--gap, 1rem);
 }
 
+/*4*/
 .grid {
     display: grid;
     gap: var(--gap, 1rem);
 }
 
+/*5*/
+.container {
+    /* padding-inline: 2em; */
+    padding-inline: clamp(.6em, 2vw, 2em);
+    margin-inline: auto;
+    max-width: 90rem;  /*buvo 73rem*/
+    /* border: 1px solid red; */
+}
+
+/*7*/
+/*adding spacing*/
 .flow > *:where(:not(:first-child)) {  
     margin-top: var(--flow-space, 1.5rem);
 }
 
-.button__flow {
+/* .button__flow {
     padding: 0.5rem 1.25rem;
     border-radius: 999px;
-}
+} */
 
+/*6*/
 .sr-only {
     position: absolute;
     width: 1px;
@@ -117,70 +143,129 @@
   .skip-to-content:focus {
       transform: translateY(0);
   }
-  
+
+.darkMode {
+    --clr-grey-50: 216 25% 25%; /*main*/
+    --clr-white: 215 27% 32%; /*buttons*/
+    --clr-blue-900: 0 100% 100%; /*title & buttons text*/
+    --clr-grey-5001: 216 47% 78%; /*under title & above title text*/
+    --clr-grey-5002: 0 100% 100%; /*moon & sun*/
+    --clr-red-500: 220 38% 97%; /*Error note*/
+}
   
  /* Colors */
- 
-.text-neutral-900 {color: hsl(var(--clr-neutral-900));}
-.text-neutral-600 {color: hsl(var(--clr-neutral-600));}
-.text-neutral-300 {color: hsl(var(--clr-neutral-300));}
-.text-neutral-0 {color: hsl(var(--clr-neutral-0));}
- 
-.bg-neutral-900 {background-color: hsl(var(--clr-neutral-900));}
-.bg-neutral-800 {background-color: hsl(var(--clr-neutral-800));}
-.bg-neutral-700 {background-color: hsl(var(--clr-neutral-700));}
-.bg-neutral-600 {background-color: hsl(var(--clr-neutral-600));}
-.bg-neutral-300 {background-color: hsl(var(--clr-neutral-300));}
-.bg-neutral-200 {background-color: hsl(var(--clr-neutral-200));}
-.bg-neutral-100 {background-color: hsl(var(--clr-neutral-100));}
-.bg-neutral-0 {background-color: hsl(var(--clr-neutral-0));}
-.bg-red-700 {background-color: hsl(var(--clr-red-700));}
+.bg-white {background-color: hsl(var(--clr-white));}
+.bg-black {background-color: hsl(var(--clr-black));}
+.bg-grey-50 {background-color: hsl(var(--clr-grey-50));}
+.bg-grey-5001 {background-color: hsl(var(--clr-grey-5002));}
+.bg-grey-5002 {background-color: hsl(var(--clr-grey-5001));}
+.bg-blue-50 {background-color: hsl(var(--clr-blue-50));}
+.bg-blue-100 {background-color: hsl(var(--clr-blue-100));}
+.bg-blue-300 {background-color: hsl(var(--clr-blue-300));}
+.bg-blue-500 {background-color: hsl(var(--clr-blue-500));}
+.bg-blue-850 {background-color: hsl(var(--clr-blue-850));}
+.bg-blue-900 {background-color: hsl(var(--clr-blue-900));}
+.bg-blue-950 {background-color: hsl(var(--clr-blue-950));}
+.bg-green-100 {background-color: hsl(var(--clr-green-100));}
+.bg-green-500 {background-color: hsl(var(--clr-green-500));}
+.bg-purple-100 {background-color: hsl(var(--clr-purple-100));}
+.bg-purple-600 {background-color: hsl(var(--clr-purple-600));}
+.bg-orange-50 {background-color: hsl(var(--clr-orange-50));}
+.bg-orange-400 {background-color: hsl(var(--clr-orange-400));}
 .bg-red-500 {background-color: hsl(var(--clr-red-500));}
-.bg-red-400 {background-color: hsl(var(--clr-red-400));}
+
  
- 
+
+.text-blue-900 {color: hsl(var(--clr-blue-900));}
+.text-blue-850 {color: hsl(var(--clr-blue-850));}
+.text-blue-300 {color: hsl(var(--clr-blue-300));}
+.text-grey-5001 {color: hsl(var(--clr-grey-5001));}
+.text-grey-5002 {color: hsl(var(--clr-grey-5002));}
+.text-red-500 {color: hsl(var(--clr-red-500));}
+.text-slate-700 {color: hsl(var(--clr-slate-700));}
+.text-white {color: hsl(var(--clr-white));}
+
 /* typography */
+
+.fst-italic { font-style: var(--fst-italic);}
 
 .lh-1 { line-height: var(--lh-1);}
 .lh-12 { line-height: var(--lh-12);}
-.lh-14 { line-height: var(--lh-14);}
+.lh-15 { line-height: var(--lh-15);}
 
-.ls-1 { letter-spacing: var(--ls-1);}
-.ls-02 { letter-spacing: var(--ls-02);}
-.ls-03 { letter-spacing: var(--ls-03);}
-.ls-05 { letter-spacing: var(--ls-05);}
-
-.fs-34 { font-size: var(--fs-34);}
-.fs-20 { font-size: var(--fs-20);}
-.fs-16 { font-size: var(--fs-16);}
-
+.fw-300 { font-weight: var(--fw-300);}
 .fw-400 { font-weight: var(--fw-400);}
 .fw-500 { font-weight: var(--fw-500);}
-.fw-700 { font-weight: var(--fw-700);}
 
+.fs-144 { font-size: var(--fs-144);}
+.fs-64 { font-size: var(--fs-64);}
+.fs-36 { font-size: var(--fs-36);}
+.fs-28 { font-size: var(--fs-28);}
+.fs-24 { font-size: var(--fs-24);}
+.fs-20 { font-size: var(--fs-20);}
+/* .fs-88 { font-size: var(--fs-88);}
+.fs-40 { font-size: var(--fs-40);}
+.fs-18 { font-size: var(--fs-18);}
+.fs-14 { font-size: var(--fs-14);} */
+
+.upperCase { text-transform: uppercase;}
+
+.capitalise { text-transform: capitalize;}
 
 body {
-    font-family: var(--ff-noto-sans);
-    font-size: var(--fs-16);
+    font-family: var(--ff-rubik);
+    font-size: var(--fs-28);
     font-weight: var(--fw-400);
-    color: hsl(var(--clr-neutral-900));
-    line-height: var(--lh-14);
-    letter-spacing: var(--ls-05);
-    background-image: var(--background);
+    color: hsl(var(--clr-blue-900));
+    line-height: var(--lh-15);
+    background-color: hsl(var(--clr-white));
 }
 
-/* ------------------ */
-/* Typography */
-/* ------------------ */
+/* LOGO */
+.logo__img {
+    width: clamp(2.5rem, 5vw, 3.5rem);
+    /* height: 3.5rem; */
+    aspect-ratio: 1;
+    border-radius: 0.5rem;
+    place-content: center;
+    align-self: center;
+    justify-items: center;
+}
 
+.logo_text {
+    align-content: center;
+}
 
-/* ------------------ */
-/* Components */
-/* ------------------ */
+.logo__light {
+    max-width: 100%;
+    --gap: 1rem;
+    /* border: 1px solid green; */
+    padding: .7rem;
+    /* max-height: 7rem; */
+}
 
-/* Logo */
-.logoName > path {
-    fill: hsl(var(--clr-neutral-900));
+.logo__dark {
+    max-width: 100%;
+    --gap: 1rem;
+    padding: .7rem;
+    /* max-height: 7rem; */
+    /* --gap: 1.5rem; */
+}
+
+/* LIGHT/DARK MODE BUTTON */
+.mode__switch-light {
+    max-height: 3em;
+    align-content: center;
+    justify-content: center;
+    padding: 1rem; 
+}
+
+.mode__switch-dark {
+    max-height: 3em;
+    align-content: center;
+    justify-content: center;
+    /* color: white; */ /* istrinti */
+    padding: 1rem;  
 }
 
 /* Toggle button with all states */
@@ -188,8 +273,9 @@ body {
 .switch {
   position: relative;
   display: inline-block;
-  width: 2.25rem;
-  height: 1.25rem;
+  width: 3.3rem;
+  height: 2rem;
+  /* border: 1px solid blue; */
 }
 
 /* Hide default HTML checkbox */
@@ -208,507 +294,185 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 1.25rem;
-  width: 2.25rem;
+  height: 1.75rem;
+  width: 3rem;
+  /* border: 1px solid red; */
   -webkit-transition: .4s;
   transition: .4s;
 }
 
 /* Oval slider */
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 1rem; 
-  width: 1rem; 
-  left: 0.14rem;
-  bottom: 0.14rem;
-  background-color: hsl(200 60% 99%);
-  box-shadow: 
-      0 1px 3px 0 hsla(218, 29%, 5%, 0.15),
-      0 1px 2px -1px hsla(218, 29%, 5%, 0.15);
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-/* 1.2. default; true */
-input:checked + .slider {
-  background-color: hsl(var(--clr-red-700));
-}
-
-input:checked + .slider:before {
-  box-shadow: 
-      0 1px 3px 0 hsla(218, 29%, 5%, 0.3),
-      0 1px 2px -1px hsla(218, 29%, 5%, 0.3);
-}
-
-/* 2.2. hover; true; */
-input:hover:checked + .slider {
-  background-color: hsl(var(--clr-red-500));
-}
-
-
-/* To style a toggle button when it receives focus via the Tab key (keyboard navigation),
-you can use the :focus-visible pseudo-class in your CSS. This pseudo-class targets 
-elements that are focused but only if the focus is visible — which usually means the 
-user navigated with the keyboard. */
-/* When a button is toggled (e.g., focused, active, clicked), and an outline or border 
-appears that wasn't there before, it increases the button's size, pushing surrounding 
-elements or changing layout. To prevent this layout shift, there are a clean solution: 
-    Use box-shadow to simulate a border/outline. It doesn't affect the element's size or layout.
-    box-shadow is rendered outside the element's box, so it won't push other content around.*/
-
-/* 3.1. focus; false*/
-input:focus-visible:not(:checked) + .slider { 
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* 3.2. focus; true */
-input:focus-visible:checked + .slider { 
-    background-color: hsl(var(--clr-red-700));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* disabled; false */
-input:disabled:not(:checked) + .slider {
-  background-color: hsl(var(--clr-neutral-100));
-}
-
-input:disabled + .slider:before {
-  box-shadow: 
-      0 1px 3px 0 hsla(218, 29%, 5%, 0.15),
-      0 1px 2px -1px hsla(218, 29%, 5%, 0.15);
-}
-
-/* disabled; true */
-input:disabled:checked + .slider {
-  background-color: hsl(var(--clr-neutral-100));
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(1rem); 
-  -ms-transform: translateX(1rem);
-  transform: translateX(1rem);
+    position: absolute;
+    content: "";
+    top: 11%;
+    bottom: 11%;
+    /* height: 1.25rem; */ 
+    width: 1.25rem;
+    aspect-ratio: 1;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
 }
 
 /* Rounding sliders */
 .slider.round {
-  border-radius: 2.125rem; 
+    /* width: 3rem;
+    height: 1.75rem; */
+    top: 3%;
+    bottom: 3%;
+    place-self: center;
+    padding: 0.25rem;
+    border-radius: 2.125rem; 
+    background-color: hsl(var(--clr-purple-600));
 }
 
 .slider.round:before {
-  border-radius: 50%;
+    border-radius: 50%;
 }
 
-/* Dark-Light mode toggling button */
-/* light default */
-#darkMode-toggle {
-   cursor: pointer;
-   height: 3.2rem;
-   width: 3.2rem;
-   padding: 0.5rem;
-   border: none;
-   border-radius: 0.75rem;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background-color: hsl(var(--clr-neutral-100));
+.slider__dark:before {
+    left: 50%;
 }
 
-#darkMode-toggle svg:last-child {
-    display: none;
-}
-
-.darkMode #darkMode-toggle svg:first-child {
-    display: none;
-}
-
-.darkMode #darkMode-toggle svg:last-child {
-    display: block;
-}
-
-/* light focus */
-#darkMode-toggle:focus-visible {
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* light hover */
-#darkMode-toggle:hover {
-    background-color: hsl(var(--clr-neutral-300));
-}
-
-/* dark default */
-.darkMode #darkMode-toggle {
-   background-color: hsl(var(--clr-neutral-700));
-}
-
-/* dark focus */
-.darkMode #darkMode-toggle:focus-visible {
-    background-color: hsl(var(--clr-neutral-700));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* dark hover */
-.darkMode #darkMode-toggle:hover {
-    background-color: hsl(var(--clr-neutral-300));
-}
-
-/* Filter tab */
-/* Light mode */
-/* default default */
-.filterTab {
-    cursor: pointer;
-    padding: 0.5rem 1.25rem;
-    border-radius: 999px;
-    border: 2px solid hsl(var(--clr-neutral-200));
-}
-
-/* default active */
-.filterTab[aria-selected="true"] {
-    color: hsl(var(--clr-neutral-0));
-    border: 2px solid hsl(var(--clr-red-700));
-    background-color: hsl(var(--clr-red-700));    
-}
-
-/* hover active */
-.filterTab[aria-selected="true"]:hover {
-    border: 2px solid hsl(var(--clr-red-500));
-    background-color: hsl(var(--clr-red-500));
-}
-
-/* focus default */
-.filterTab[aria-selected="false"]:focus-visible {
-    border: 2px solid hsl(var(--clr-neutral-0));
-    background-color: hsl(var(--clr-neutral-0));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-200)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* focus active */
-.filterTab[aria-selected="true"]:focus-visible {
-    color: hsl(var(--clr-neutral-0));
-    border: 2px solid hsl(var(--clr-red-700));
-    background-color: hsl(var(--clr-red-700));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* darkMode */
-/* default default */
-.darkMode .filterTab {
-    color: hsl(var(--clr-neutral-900));
-    border: 2px solid hsl(var(--clr-neutral-300));
-    background-color: hsl(var(--clr-neutral-700));
-}
-
-/* default active */
-.darkMode .filterTab[aria-selected="true"] {
-    color: hsl(var(--clr-neutral-0));
-    border: 2px solid hsl(var(--clr-red-400));
-    background-color: hsl(var(--clr-red-400));
-}
-
-/* hover default */
-.darkMode .filterTab[aria-selected="false"]:hover {
-    /* color: hsl(var(--clr-neutral-900)); */
-    border: 2px solid hsl(var(--clr-neutral-300));
-    background-color: hsl(var(--clr-neutral-300));
-}
-
-/* hover active */
-.darkMode .filterTab[aria-selected="true"]:hover {
-    color: hsl(var(--clr-neutral-0));
-    border: 2px solid hsl(var(--clr-red-500));
-    background-color: hsl(var(--clr-red-500));
-}
-
-/* focus default */
-.darkMode .filterTab[aria-selected="false"]:focus-visible {
-    border: 2px solid hsl(var(--clr-neutral-700));
-    background-color: hsl(var(--clr-neutral-700));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* focus active */
-.darkMode .filterTab[aria-selected="true"]:focus-visible {
-    color: hsl(var(--clr-neutral-0));
-    border: 2px solid hsl(var(--clr-red-400));
-    background-color: hsl(var(--clr-red-400));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-
-/* Remove button */
-/* Light mode */
-.removeBtn {
-    cursor: pointer;
-    border: 1px solid hsl(var(--clr-neutral-200));
-}
-
-.removeBtn:hover {
-    background-color: hsl(var(--clr-red-500));
-    color: hsl(var(--clr-neutral-0));
-}
-
-.removeBtn:focus-visible {
-    color: hsl(var(--clr-neutral-900));
-    border: 1px solid hsl(var(--clr-neutral-100));
-    background-color: hsl(var(--clr-neutral-100));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* darkMode */
-.darkMode .removeBtn {
-    color: hsl(var(--clr-neutral-900));
-    border: 2px solid hsl(var(--clr-neutral-300));
-    background-color: hsl(var(--clr-neutral-0));
-}
-
-.darkMode .removeBtn:hover {
-    color: hsl(var(--clr-neutral-0));
-    background-color: hsl(var(--clr-red-700));
-    border: 2px solid hsl(var(--clr-red-700));
-}
-
-.darkMode .removeBtn:focus-visible {
-    color: hsl(var(--clr-neutral-900));
-    border: 2px solid hsl(var(--clr-neutral-0));
-    background-color: hsl(var(--clr-neutral-700));
-    box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
-}
-
-/* Extension card */
-.card {
-    grid-template-rows: minmax(1rem, 6rem) auto;
-    grid-template-areas:
-        'logo desc'
-        'edit edit';
-    gap: 1rem;
-    padding: 1.25rem;
-    min-width: 18rem;
-    max-width: 38rem;
-    height: auto;
-    border: 1px solid hsl(var(--clr-neutral-200));
-    border-radius: 1.25rem;
-    box-shadow: 
-        0 2px 2px 0 hsla(217, 34, 82, 0.2),
-        0 1px 5px 1px hsla(217, 34, 82, 0.22);
-}
-
-.card__logo {
-    grid-area: logo;
-    justify-self: start;
-    align-self: start;
-}
-
-.card__desc {
-    grid-area: desc;
-    align-self: start;
-    align-items: start;
-}
-
-.card__desc > h2 {
-    margin: 0;
-    justify-self: start;
-    align-self: start;
-}
-
-.card__desc > p {
-    margin-top: 0.5rem;
-    justify-self: start;
-    align-self: start;
-}
-
-.card__edit {
-    grid-area: edit;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.5rem;
-}
-
-/* -------------------- */
-/* Layout */
-/* -------------------- */
-/* -------------------- */
-/* Mobile Layout */
-/* -------------------- */
-.container {
-    padding: 1.25rem 1rem 4rem 1rem;
-    margin-inline: auto;
-    max-width: 73rem;
-}
-
-header {
-    padding: 0.5rem 0.75rem;
-    gap: auto;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid hsl(var(--clr-neutral-200));
-    border-radius: 0.6rem;
-}
-
-/* Sometimes, SVGs have extra space due to their viewBox or internal alignment.*/
-header > div svg {
-    vertical-align: middle; /* Add this to your CSS to center svg */
-}
-
-.control {
-    margin-block: 2.5rem;
-    justify-items: center;
-    gap: 1.5rem;
-}
-
-.control > h1 {
-    text-align: center;
-}
-
-nav > div {
-    flex-wrap: wrap;
+/* Progress bar */
+.progress__bar-container {
+    /* --gap: 1rem; */
     justify-content: center;
 }
 
-.grid__main{
-    gap: 0.75rem;
-    justify-content: center;
+.progress__bar-light {
+  height: 1rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-footer {
-    margin-inline: auto;
+.progress__bar-dark {
+  height: 1rem;
+  padding: 0.25rem;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-/* -------------------- */
-/* Tablet Layout */
-/* -------------------- */
-@media (min-width: 41em) {
-    
-    .control {
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    .grid__main {
-        grid-template-columns: repeat(2, minmax(18rem, 28rem));
-        gap: 0.75rem;
-        justify-items: center;
-    }
+.progress {
+  height: 100%;
+  background-color: hsl(var(--clr-purple-600)); /* or any color */
+  width: 65%; /* set width dynamically */
+  border-radius: 6.5rem;
+  transition: width 0.3s;
+}
+
+/* Wrong answer notification */
+.error {
+    --gap: 0.19rem;
+}
+
+.error > * {
+    align-self: center;
+}
+
+.error img {
+    width: 1.875rem;
+    /*height: 1.875rem; */
+    aspect-ratio: 1;
+}
+
+/* Button submit */
+button {
+    cursor: pointer;
+    /* padding: 2rem; */
+    border: none;
+    border-radius: 1.5rem;
+}
+
+.submit__button {
+    box-shadow: 
+        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+}
+
+.submit__button.active {
+    background:
+        linear-gradient(hsla(0, 0%, 100%, 0.5)), hsl(var(--clr-purple-600));
 
 }
 
-/* -------------------- */
-/* Desktop Layout */
-/* -------------------- */
-@media (min-width: 58em) {
-
-    .grid__main {
-        grid-template-columns: repeat(3, minmax(18rem, 24rem));
-        gap: 0.75rem;
-        justify-items: center;
-    }
-}
-
-/* modal styles */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0; top: 0; width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.5);
-  justify-content: center; align-items: center;
-}
-
-.modal[aria-hidden="false"] {
-  display: flex;
-}
-
-.modal__content {
-  padding: 1.5rem;
-  border-radius: 1rem;
-  max-width: 90vw;
-  min-width: 300px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  position: relative;
-}
-
-.modal__header {
+/* Button with icon */
+.subject__button {
+   /*  padding: 1.5rem; */
+    justify-items: start;
     align-items: center;
-    justify-content: space-between;
+    --gap: 2rem;
 }
 
-.modal__close {
-  position: absolute;
-  top: 1rem; right: 1rem;
-  background: none; border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0rem 0.5rem;
-}
-
-.modal__close:focus-visible {
-    background-color: hsl(var(--clr-neutral-300));      
-    border-radius: .4rem;
+.subject__button.lightShadow {
     box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
+        0 16px 40px 0px hsla(216, 25%, 25%, 0.14);
 }
 
-.modal__footer {
-    gap: 1rem;
-    justify-content: flex-end;
-}
-
-.confirmBtn {
-    cursor: pointer;
-    border: 2px solid hsl(var(--clr-red-500));
-}
-
-.confirmBtn:hover {
-    background-color: hsl(var(--clr-red-700));
-}
-
-.confirmBtn:focus-visible {
+.subject__button.darkShadow {
     box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
+        0 16px 40px 0px hsla(0, 0%, 100%, 0.14);
 }
 
-.cancelBtn {
-    cursor: pointer;
-    border: 2px solid hsl(var(--clr-neutral-200));
+.subject__icon {
+    width: 3.5rem;
+    /*height: 3.5rem; */
+    aspect-ratio: 1;
+    justify-content: center;
+    align-content: center;
+    border-radius: 0.5rem;
 }
 
-.cancelBtn:focus-visible {
-    background-color: hsl(var(--clr-neutral-300));
+/* Button option */
+.option {
+    /* padding: 1.5rem; */
+    justify-items: start;
+    align-items: center;
+    --gap: 2rem;
+    margin-left: 0 !important;
+}
+
+.option.light {
     box-shadow: 
-        0 0 0 2px hsl(var(--clr-neutral-0)),
-        0 0 0 4px hsl(var(--clr-red-400));
-    outline: none;
+        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+}
+
+.option.dark {
+    box-shadow: 
+        0 16px 40px 0px hsla(216, 25%, 25%, 0.14);
+}
+
+.option.hover {
+    border: 3px solid hsl(var(--clr-purple-600));
+}
+
+.option.correct__answer {
+    border: 3px solid hsl(var(--clr-green-500));
+}
+
+.option.incorrect__answer {
+    border: 3px solid hsl(var(--clr-red-500));
+}
+
+.button__option .option { 
+    /* width: 30rem; */
+    justify-content: start;
+    --gap: 0.7rem;
+}
+
+/* It let's put icon on the right side of button element
+It is very usefull code */
+.correct__icon, .incorrect__icon {
+    margin-left: auto;
+    width: clamp(1.5rem, 2vw, 2rem);
+}
+
+.option__tag {
+    width: clamp(2.5rem, 4vw, 3.5rem ); 
+    aspect-ratio: 1;
+    /* height: 3.5rem; */
+    border-radius: 0.5rem;
+    justify-content: center;
+    align-content: center;
 }

@@ -40,7 +40,7 @@ a:not([class]) {
 /*--Make images easier to work with--*/
 img, picture {
     max-width: 100%;
-   /*  display: block; */ /* I commented it because hidden attribute does not work */
+    display: block;
 }
 
 /*--Inherit fonts for input and buttons--*/

@@ -4,12 +4,754 @@
     <meta charset="UTF-8">
     <title>Design system</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,500;1,500&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <style>
+        body {
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* ------------------------- */
+        
+        .container { 
+            min-width: 19rem;
+        }
+        
+        .container > * {
+            min-width: inherit;
+        }
+        
+        .extra {
+            border: 1px solid black;
+        }
+        
+        [class^="bg-"] { 
+            height: 7.8rem; 
+            min-width: 16rem;
+            border-radius: 0.625rem;
+        }
+        
+        .colors__group {
+            --flow-space: 4rem;
+        }
+        
+        .colors__gap {
+            --gap: 2rem;
+        }
+        
+        .color__name {
+            padding-block: 1.5rem;
+        } 
+        
+        hr {
+           border: 1px solid hsl(var(--clr-blue-900) / 0.15);
+           margin-block: 2rem;
+        }
+        
+        .color__code {
+            --gap: 0.75rem;
+        }
+        
+        .color__code > p span {
+            color: hsl(var(--clr-grey-5001));
+        }
+        
+        .color__name, .color__code {
+            font-weight: var(--fw-500);
+        }
+        
+        /* -------------------- */
+        .typo__container {
+            gap: 2rem;
+            padding-block: 4.5rem;
+        }
+        
+        .typo > p:last-child {
+            padding-block: 1.5rem 4rem
+        }
+        
+        .typo > p span {
+            color: hsl(200, 24%, 40%)
+        }
+        
+        .desc {
+            font-size:  1rem;
+            color: hsl(202, 55%, 16%, 0.75);
+        }
+        
+        /* -------------------------- */
+        .space {
+            grid-template-rows: repeat(3, 1fr);
+            max-width: 16rem;
+            width: 100%;
+            margin: 0 auto;
+            gap: 0rem;
+        }
+            
+        .space > * {
+            font-size: 1.125rem;
+            padding: 0.5rem;
+            min-width: 0;
+            width: 100%;
+            word-break: break-word;
+        }
+            
+        .spacing__color { background-color: hsl(202, 86%, 94%); }
 
-  
+        .spacing__caption { 
+            color: hsl(200, 24%, 40%);
+            font-weight: var(--fw-500);
+        }
+
+        .space:not(.spacing__caption) p {
+            color: hsl(200, 24%, 40%);
+        }
+                    
+        .spacing__title {
+            padding-top: 3rem;
+        }
+            
+        
+        @media (min-width: 35rem) {
+            .space {
+                grid-template-columns: repeat(3, 1fr);
+                max-width: 30rem;
+                width: 100%;
+                margin: 0 auto;
+                gap: 1.5rem;
+            }
+            
+            .spacing__title {
+                padding-top: 0.5rem;
+            }
+        }
+        
+        /* -------------------------------- */
+            
+        .component__group {
+            justify-content: center;
+            justify-items: center;
+        }
+                        
+        .component__container {
+            width: 90%;
+            padding: 0.7rem;
+            border: 1px dashed hsl(266, 100%, 64%);
+            border-radius: 0.3rem;
+            justify-content: space-evenly;
+        }
+            
+        button {
+            padding: 1rem;
+            width: clamp(15rem, 75vw, 28rem);
+        }
+            
+        .progress__bar-light {
+            width: clamp(15rem, 75vw, 23rem);
+        }
+            
+        .progress__bar-dark {
+            width: clamp(15rem, 75vw, 23rem);
+        }
+            
+        .error > p {
+            font-size: clamp( 1rem, 5vw, 1.125rem);
+        }
+            
+        .subjects > * {
+            --gap: 0.7rem;
+        }
+            
+        .option {
+            --gap: 0.7rem;
+        }
+            
+        .button__option {
+            width: 90%;
+            justify-content: center;
+            justify-self: center;
+        }
+            
+        .score__container {
+            justify-self: center;
+            --gap: 2.5rem; /* tab:3.5rem dt:5rem */
+            padding-block: 2.5rem; /*mb:2.5rem tab:2.5rem dt:5rem*/
+        }
+            
+        .score__container > * {
+            width: clamp(14rem, 90vw, 25rem); /* tab:30 dt:35rem */
+            padding: 1rem; /* tab:2rem dt: 3rem; */
+            justify-items: center;
+            box-shadow: 
+                0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+            border-radius: 1.5rem;
+        }
+            
+        .score__light {
+            --gap: 0.5rem; /* tab:1rem dt:1.5rem */
+        }
+            
+        .score__dark {
+            --gap: 0.5rem; /* tab:1rem dt:1.5rem */
+        }
+            
+        .score {
+            --gap: 0.5rem;
+            justify-items: center;
+        }
+        
+        @media (min-width: 35rem) {
+            .component__group {
+                display: grid;
+                grid-template-columns: 1fr;
+                max-width: 80rem;
+            }     
+
+            .button__option {
+                display: grid;
+                grid-template-columns: 1fr;
+                max-width: 100%;
+                justify-items: center;
+            }
+            
+            .score__container {
+                --gap: 3.5rem; /* tab:3.5rem dt:5rem */
+            }
+            
+             .score__container > * {
+                width: clamp(25rem, 5vw, 30rem); /* tab:30 dt:35rem */
+                padding: 2rem; /* tab:2rem dt: 3rem; */
+            }
+            
+             .score__light {
+                --gap: 1rem; /* tab:1rem dt:1.5rem */
+            }
+            
+            .score__dark {
+                --gap: 1rem; /* tab:1rem dt:1.5rem */
+            }
+            
+        }
+        
+        @media (min-width: 45rem) {
+            .container {
+                justify-items: start;
+            }
+            
+            .component__group {
+                grid-template-columns: 1fr 1fr;
+                max-width: 88rem;
+            }
+            
+            .component__container {
+                width: 100%;
+            }
+            
+            .mode__switch-light,
+            .mode__switch-dark {
+                align-self: center;
+            }
+            
+            .progress__bar-light {
+                width: clamp(15rem, 35vw, 29rem);
+            }
+            
+            .progress__bar-dark {
+                width: clamp(15rem, 35vw, 29rem);
+            }
+            
+            button {
+                width: clamp(15rem, 35vw, 35rem);
+            }
+        
+            .button__option {
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+            }
+             
+            .score__container {
+                --gap: 2.5rem; /* tab:3.5rem dt:5rem */
+                padding-block: 5rem; /*mb:2.5rem tab:2.5rem dt:5rem*/
+            }
+            
+            .score__container > * {
+                width: clamp(30rem, 5vw, 35rem); /* tab:30 dt:35rem */
+                padding: 3rem; /* tab:2rem dt: 3rem; */
+            }
+            
+            .score__light {
+                --gap: 1.5rem; /* tab:1rem dt:1.5rem */
+            }
+            
+            .score__dark {
+                --gap: 1.5rem; /* tab:1rem dt:1.5rem */
+            }
+        }
+        
+    </style>
+</head>
+<body class="container">
+    <h1 class="fs-144 lh-1">Design system</h1>
+    <!-- Colors -->
+    <section id="colors" class="flow" style="margin: 2rem 0;">
+        <h2 class="fs-64 fw-500">Colors</h2>
+        <div class="flex colors__gap" style="margin-top: 4rem">
+            <div>
+                <h3 class="fs-24 fw-500">White</h3>
+                <hr>
+                <div class="bg-white extra"></div>
+                <p class="color__name">White</p>
+                <div class="grid color__code">
+                    <p><span>HEX</span> &nbsp; #FFFFFF</p>
+                    <p><span>RGB</span> &nbsp; 255, 255, 255</p>
+                    <p><span>HSL</span> &nbsp; 0, 100%, 100%</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="fs-24 fw-500">Black</h3>
+                <hr>
+                <div class="bg-black"></div>
+                <p class="color__name">Black</p>
+                <div class="grid color__code">
+                    <p><span>HEX</span> &nbsp; #FFFFFF</p>
+                    <p><span>RGB</span> &nbsp; 255, 255, 255</p>
+                    <p><span>HSL</span> &nbsp; 0, 100%, 100%</p>
+                </div>
+            </div>
+        </div>
+            
+        <div class="colors__group">
+            <h3 class="fs-24 fw-500">Grey</h3>
+            <hr>
+            <div class="flex colors__gap">
+                <div>
+                    <div class="bg-grey-5001"></div>
+                    <p class="color__name">Grey 500</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #626C7F</p>
+                        <p><span>RGB</span> &nbsp; 98, 108, 127</p>
+                        <p><span>HSL</span> &nbsp; 219, 13%, 44%</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-grey-50 extra"></div>
+                    <p class="color__name">Grey 50</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #F4F6FA</p>
+                        <p><span>RGB</span> &nbsp; 244, 246, 250</p>
+                        <p><span>HSL</span> &nbsp; 220, 38%, 97%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="colors__group">
+            <h3 class="fs-24 fw-500">Blue</h3>
+            <hr>
+            <div class="flex colors__gap">
+                <div>
+                    <div class="bg-blue-950"></div>
+                    <p class="color__name">Blue 950</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #2D3949</p>
+                        <p><span>RGB</span> &nbsp; 45, 57, 73</p>
+                        <p><span>HSL</span> &nbsp; 214, 24%, 23%</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-blue-900"></div>
+                    <p class="color__name">Blue 900</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #313E51</p>
+                        <p><span>RGB</span> &nbsp; 49, 62, 81</p>
+                        <p><span>HSL</span> &nbsp; 216, 25%, 25%</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-blue-850"></div>
+                    <p class="color__name">Blue 850</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #3B4D66</p>
+                        <p><span>RGB</span> &nbsp; 59, 77, 102</p>
+                        <p><span>HSL</span> &nbsp; 215, 27%, 32%</p>
+                    </div>
+                </div>
+                
+                <div class="flex colors__gap">
+                    <div>
+                        <div class="bg-blue-500"></div>
+                        <p class="color__name">Blue 500</p>
+                        <div class="grid color__code">
+                            <p><span>HEX</span> &nbsp; #306AFF</p>
+                            <p><span>RGB</span> &nbsp; 48, 106, 255</p>
+                            <p><span>HSL</span> &nbsp; 223, 100%, 59%</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-blue-300"></div>
+                        <p class="color__name">Blue 300</p>
+                        <div class="grid color__code">
+                            <p><span>HEX</span> &nbsp; #ABC1E1</p>
+                            <p><span>RGB</span> &nbsp; 171, 193, 255</p>
+                            <p><span>HSL</span> &nbsp; 216, 47%, 78%</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-blue-100"></div>
+                        <p class="color__name">Blue 100</p>
+                        <div class="grid color__code">
+                            <p><span>HEX</span> &nbsp; #EDF1F9</p>
+                            <p><span>RGB</span> &nbsp; 237, 241, 249</p>
+                            <p><span>HSL</span> &nbsp; 220, 50%, 95%</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-blue-50"></div>
+                        <p class="color__name">Blue 50</p>
+                        <div class="grid color__code">
+                            <p><span>HEX</span> &nbsp; #EBF0FF</p>
+                            <p><span>RGB</span> &nbsp; 235, 240, 255</p>
+                            <p><span>HSL</span> &nbsp; 225, 100%, 96%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="colors__group">
+            <h3 class="fs-24 fw-500">Green</h3>
+            <hr>
+            <div class="flex colors__gap">
+                <div>
+                    <div class="bg-green-500"></div>
+                    <p class="color__name">Green 500</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #2FD887</p>
+                        <p><span>RGB</span> &nbsp; 47, 216, 135</p>
+                        <p><span>HSL</span> &nbsp; 151, 68%, 52%</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-green-100"></div>
+                    <p class="color__name">Green 100</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #EOFDEF</p>
+                        <p><span>RGB</span> &nbsp; 224, 253, 239</p>
+                        <p><span>HSL</span> &nbsp; 151, 88%, 94%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+        <div class="colors__group">
+            <h3 class="fs-24 fw-500">Purple</h3>
+            <hr>
+            <div class="flex colors__gap">
+                <div>
+                    <div class="bg-purple-600"></div>
+                    <p class="color__name">Purple 600</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #A729F5</p>
+                        <p><span>RGB</span> &nbsp; 167, 41, 245</p>
+                        <p><span>HSL</span> &nbsp; 277, 91%, 56%</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-purple-100"></div>
+                    <p class="color__name">Purple 100</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #F6E7FF</p>
+                        <p><span>RGB</span> &nbsp; 246, 231, 255</p>
+                        <p><span>HSL</span> &nbsp; 278, 100%, 95%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+        <div class="colors__group">
+            <h3 class="fs-24 fw-500">Orange</h3>
+            <hr>
+            <div class="flex colors__gap">
+                <div>
+                    <div class="bg-orange-400"></div>
+                    <p class="color__name">Orange 400</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #FF7E35</p>
+                        <p><span>RGB</span> &nbsp; 255, 126, 53</p>
+                        <p><span>HSL</span> &nbsp; 22, 100%, 60%</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="bg-orange-50"></div>
+                    <p class="color__name">Orange 50</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #FFF5ED</p>
+                        <p><span>RGB</span> &nbsp; 255, 245, 237</p>
+                        <p><span>HSL</span> &nbsp; 27, 100%, 96%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
+        <div class="colors__group">
+            <h3 class="fs-24 fw-500">Red</h3>
+            <hr>
+            <div class="flex colors__gap">
+                <div>
+                    <div class="bg-red-500"></div>
+                    <p class="color__name">Red 500</p>
+                    <div class="grid color__code">
+                        <p><span>HEX</span> &nbsp; #EE5454</p>
+                        <p><span>RGB</span> &nbsp; 238, 84, 84</p>
+                        <p><span>HSL</span> &nbsp; 0, 82%, 63%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Typography -->
+    <section id="typography" style="margin: 2rem 0;">
+        <h2 class="fs-64 fw-500" >Typography</h2>
+        <div class="grid typo__container">
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 1</span> &nbsp; Rubik Medium</p>
+                <p class="desc">144px &nbsp; 100% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fs-144 fw-500 lh-1">Lorem</p>
+            </div>    
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 2 (Medium)</span> &nbsp; Rubik Medium</p>
+                <p class="desc">64px &nbsp; 100% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fs-64 fw-500 lh-1">Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 2 (Light)</span> &nbsp; Rubik Light</p>
+                <p class="desc">64px &nbsp; 100% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fs-64 fw-300 lh-1">Lorem ipsum dolor sit amet.</p>
+            </div>
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 3</span> &nbsp; Rubik Medium</p>
+                <p class="desc">36px &nbsp; 120% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fs-36 fw-500 lh-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 4</span> &nbsp; Rubik Medium</p>
+                <p class="desc">28px &nbsp; 100% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fw-500 lh-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 5 (Medium)</span> &nbsp; Rubik Medium</p>
+                <p class="desc">24px &nbsp; 150% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fs-24 fw-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            </div>
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 5 (Regular)</span> &nbsp; Rubik Medium</p>
+                <p class="desc">24px &nbsp; 150% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fs-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            </div>
+            <div class="typo">
+                <p class="fw-500"><span>Text Preset 6</span> &nbsp; Rubik Italic</p>
+                <p class="desc">20px &nbsp; 150% Line Height &nbsp; 0px Letter Spacing</p>
+                <hr>
+                <p class="fs-20 fst-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            </div>
+        </div>
+    </section>  
+        
+    <!-- Spacing -->
+    <section id="spacing" style="margin: 2rem 0;">
+        <h2 class="fs-64 fw-500">Sapcing</h2>
+        <div class="grid space" style="margin: 4rem 0;">
+            <p class="spacing__caption">Name</p>
+            <p class="spacing__caption">Pixels</p>
+            <p class="spacing__caption">Spacing</p>
+            <p class="spacing__title">spacing-100</p>
+            <p class="spacing__data">8px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 0.25rem;"></p>
+            <p class="spacing__title">spacing-200</p>
+            <p class="spacing__data">16px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 0.5rem;"></p>
+            <p class="spacing__title">spacing-300</p>
+            <p class="spacing__data">24px</p>
+            <p class="spacing__color" style="width : 0rem; padding-inline: 0.75rem;"></p>
+            <p class="spacing__title">spacing-400</p>
+            <p class="spacing__data">32px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 1rem;"></p>
+            <p class="spacing__title">spacing-500</p>
+            <p class="spacing__data">40px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 1.25rem;"></p>
+            <p class="spacing__title">spacing-600</p>
+            <p class="spacing__data">48px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 1.5rem;"></p>
+            <p class="spacing__title">spacing-800</p>
+            <p class="spacing__data">64px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 2rem;"></p>
+            <p class="spacing__title">spacing-1600</p>
+            <p class="spacing__data">128px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 4rem;"></p>
+            <p class="spacing__title">spacing-1800</p>
+            <p class="spacing__data">144px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 4.5rem;"></p>
+            <p class="spacing__title">spacing-2300</p>
+            <p class="spacing__data">184px</p>
+            <p class="spacing__color" style="width: 0rem; padding-inline: 5.75rem;"></p>
+        </div>
+    </section>
+    <section id="components" style="margin: 2rem 0;">
+        <h2 class="fs-64 fw-500">Components</h2>
+        <div class="flex component__group" style="margin: 4rem 0;">
+        <!-- Logo -->
+            <div class="flex bg-grey-50 component__container">
+                <div class="flex logo__light">
+                    <div class="logo__img bg-purple-100">
+                        <img src="assets/images/icon-accessibility.svg" alt="Accessibility icon" />
+                    </div>
+                    <p class="fs-28 fw-500 lh-1 logo__text">Accessibility</p>
+                </div>
+                <div class="flex bg-blue-950 logo__dark">
+                    <div class="logo__img bg-purple-100">
+                        <img src="assets/images/icon-accessibility.svg" alt="Accessibility icon" />
+                    </div>
+                    <p class="text-white fs-28 fw-500 lh-1 logo_text">Accessibility</p>
+                </div>
+            </div>
+            <!-- Light/Dark mode button -->
+            <div class="flex bg-grey-50 component__container">
+                <div class="flex mode__switch-light">
+                    <img src="assets/images/icon-sun-dark.svg" alt="Accessibility icon" />
+                    <label for="extensionToggle_1" class="switch">
+                        <input id="extensionToggle_1" type="checkbox" role="switch" aria-label="Enable extension" aria-checked="false">
+                        <span class="slider round"></span>
+                    </label>
+                    <img src="assets/images/icon-moon-dark.svg" alt="Accessibility icon" />
+                </div>
+                <div class="flex bg-blue-950 mode__switch-dark">
+                    <img src="assets/images/icon-sun-light.svg" alt="Accessibility icon" />
+                    <label for="extensionToggle_2" class="switch">
+                        <input id="extensionToggle_2" type="checkbox" role="switch" aria-label="Enable extension" aria-checked="false">
+                        <span class="slider round slider__dark"></span>
+                    </label>
+                    <img src="assets/images/icon-moon-light.svg" alt="Accessibility icon" /> 
+                </div>
+            </div>  
+            <!-- Progress bar -->
+            <div class="grid bg-grey-50 component__container progress__bar-container">
+                <div class="progress__bar-light bg-white">
+                    <div class="progress"></div>
+                </div>
+                <div class="progress__bar-dark bg-blue-850">
+                    <div class="progress"></div>
+                </div>
+            </div>
+            <!-- Wrong answer notification -->
+            <div class="grid bg-grey-50 component__container">
+                <div class="flex error">
+                    <img src="assets/images/icon-error.svg" alt="Error" />
+                    <p class="fs-24 text-red-500">Please select an answer</p>
+                </div>
+            </div>
+            <!-- Button submit -->
+            <div class="grid bg-grey-50 component__container">
+                <button class="fs-28 lh-1 text-white bg-purple-600 submit__button">Submit Answer</button>
+                <button class="fs-28 lh-1 text-white submit__button active">Submit Answer</button>
+            </div>
+            <!-- Button with icon -->
+            <div class="grid bg-grey-50 component__container subjects">
+                <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button lightShadow" type="submit" name="subject" value="html"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-html.svg" alt="html"></span> HTML</button>
+                <button class="flex bg-blue-850 fs-28 lh-1 text-white fw-500 subject__button darkShadow" type="submit" name="subject" value="html"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-html.svg" alt="html"></span> HTML</button>
+            </div>
+        </div>
+        <!-- Button option -->
+        <div class="flex bg-grey-50 component__container button__option">
+            <button class="flex option light bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-grey-50 text-grey-5001">A</span>
+                <span class="result" > 4.5 : 1</span>
+            </button>
+            <button class="flex option dark bg-blue-850 fs-28 text-white lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-grey-50 text-grey-5001">A</span>
+                <span class="result"> 4.5 : 1</span>
+            </button>
+            <button class="flex option light hover bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-purple-600 text-white">A</span>
+                <span class="result"> 4.5 : 1</span>
+            </button>
+            <button class="flex option dark hover bg-blue-850 fs-28 text-white lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-purple-600 text-blue-850">A</span>
+                <span class="result"> 4.5 : 1</span>
+            </button>
+            <button class="flex option light correct__answer bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-green-500 text-white">A</span>
+                <span class="result"> 4.5 : 1</span>
+                <img class="correct__icon" src="assets/images/icon-correct.svg" alt="correct" />
+            </button>
+            <button class="flex option dark correct__answer bg-blue-850 fs-28 text-white lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-green-500 text-blue-850">A</span>
+                <span class="result"> 4.5 : 1</span>
+                <img class="correct__icon" src="assets/images/icon-correct.svg" alt="correct" />
+            </button>
+            <button class="flex option light bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-grey-50 text-grey-5001">A</span>
+                <span class="result"> 4.5 : 1</span>
+                <img class="correct__icon" src="assets/images/icon-correct.svg" alt="selected" />
+            </button>
+            <button class="flex option dark bg-blue-850 fs-28 text-white lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-grey-50 text-grey-5001">A</span>
+                <span class="result"> 4.5 : 1</span>
+                <img class="correct__icon" src="assets/images/icon-correct.svg" alt="selected" />
+            </button>
+            <button class="flex option light incorect__answer bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-red-500 text-white">C</span>
+                <span class="result"> 2.5 : 1</span>
+                <img class="incorrect__icon" src="assets/images/icon-incorrect.svg" alt="incorrect" />
+            </button>
+            <button class="flex option dark incorrect__answer bg-blue-850 fs-28 text-white lh-1 fw-500" type="submit" name="answer" value="">
+                <span class="option__tag bg-red-500 text-blue-850">C</span>
+                <span class="result"> 2.5 : 1</span>
+                <img class="incorrect__icon" src="assets/images/icon-incorrect.svg" alt="incorrect" />
+            </button>  
+        </div>
+            
+        <!-- Score -->
+            <div class="flex bg-grey-50 component__container score__container" style="margin: 4rem 0;">
+            <div class="grid bg-white score__light" >
+                <div class="flex logo__light">
+                    <div class="logo__img bg-purple-100">
+                        <img src="assets/images/icon-accessibility.svg" alt="Accessibility icon" />
+                    </div>
+                    <p class="logo_text fs-28 fw-500 lh-1">Accessibility</p>
+                </div>
+                <div class="grid score" >
+                    <p class="fs-144">8</p>
+                    <p class="fs-24 text-grey-5001">out of 10</p>
+                </div>
+            </div>
+            <div class="grid bg-blue-950 score__dark">
+                <div class="flex logo__dark bg-blue-950">
+                    <div class="logo__img bg-purple-100">
+                        <img src="assets/images/icon-accessibility.svg" alt="Accessibility icon" />
+                    </div>
+                    <p class="logo_text text-white fs-28 fw-500 lh-1">Accessibility</p>
+                </div>
+                <div class="grid score">
+                    <p class="fs-144 text-white">8</p>
+                    <p class="fs-24 text-blue-300">out of 10</p>
+                </div>
+            </div>
+            </div>
+    </section>
+        <div style="height: 20rem;"></div>
 </body>
 </html>
