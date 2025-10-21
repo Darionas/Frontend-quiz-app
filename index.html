@@ -7,49 +7,47 @@
     <meta name="keywords" content="quiz app">
     <meta name="description" content="Frontend quiz app">
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">      
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,500;1,500&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="FM_part.css">
 </head>
-<body>
-
-  <!-- Quiz menu start -->
-
-  Welcome to the Frontend Quiz!
-  Pick a subject to get started.
-
-  HTML
-  CSS
-  JavaScript
-  Accessibility
-
-  <!-- Quiz menu end -->
-
-  <!-- Quiz question start -->
-
-  Question <!-- number --> of 10
-
-  A
-  B
-  C
-  D
-
-  Submit answer
-
-  <!-- Quiz question end -->
-
-  <!-- Quiz completed start -->
-
-  Quiz completed
-  You scored...
-
-  <!-- score --> out of 10
-
-  <!-- Quiz completed end -->
+<body class="grid container">
+    <a class="skip-to-content" href='#main'>Skip to content</a>
+    <header class="flex header">
+            <div class="flex logo__light">
+                <div class="logo__img bg-purple-100">
+                    <img src="assets/images/icon-accessibility.svg" alt="Accessibility icon" />
+                </div>
+                <p class="fs-28 fw-500 lh-1 logo__text">Accessibility</p>
+            </div>
+            <div class="flex mode__switch-light">
+                <img class="sun" src="assets/images/icon-sun-dark.svg" alt="Sun" />
+                <label for="toggle" class="switch" id="theme-label" >
+                    <input id="toggle" type="checkbox" role="switch" aria-label="Enable mode" aria-checked="false">
+                    <span class="slider round"></span>
+                </label>
+                <img class="moon" src="assets/images/icon-moon-dark.svg" alt="Moon" />
+            </div>
+    </header>
+    <main id="main" class="grid main__container">
+        <div class="intro" >
+            <h1 class="fs-64 fw-300 lh-1">Welcome to the <span class="fw-500 no-break">Frontend Quiz!</span></h1>
+            <p class="fs-20 lh-15 fst-italic text-grey-5001 notice">Pick up subject to get started.</p>
+        </div>
+    <div class="grid subjects">
+        <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="html" aria-label="Select HTML subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-html.svg" alt="HTML icon"></span> HTML</button>
+        <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="css" aria-label="Select CSS subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-css.svg" alt="CSS icon"></span> CSS</button>
+        <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="js" aria-label="Select JavaScript subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-js.svg" alt="JavaScript icon"></span> JavaScript</button>
+        <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="accessibility" aria-label="Select Accessibility subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-accessibility.svg" alt="Accessibility icon"></span> Accessibility</button>
+    </div>
+    </main>
     <footer class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
         Coded by <a href="https://www.frontendmentor.io/profile/Darionas">Darionas</a>.
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
