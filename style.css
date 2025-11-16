@@ -6,6 +6,7 @@
     
     /* 8.Colors */
     --clr-white: 0 100% 100%;
+    --clr-white-progress: 215 0% 97%;
     --clr-black: 0 0% 0%;
     --clr-grey-50: 220 38% 97%;
     --clr-grey-5001: 219 13% 44%; 
@@ -27,7 +28,7 @@
     --clr-slate-700: 200 24% 40%;
     
      /* font-sizes */
-    --fs-144: clamp(3.5rem, 6vw + 1rem, 9rem); /* 88 */
+    --fs-144: 5.5rem; /* clamp(3.5rem, 6vw + 1rem, 9rem); */ /* 88 */
     --fs-64: 2.2rem; /* 40 */
     --fs-36: 1.25rem; /* 20 */
     --fs-28: 1.125rem; /* 18 */
@@ -56,7 +57,7 @@
 
 @media (min-width: 35em) {
     :root{
-        /* --fs-144: 9rem; */
+        --fs-144: 9rem;
         --fs-64: 3rem;
         --fs-36: 1.75rem;
         --fs-28: 1.5rem;
@@ -67,7 +68,7 @@
 
 @media (min-width: 45em) {
     :root{
-        /* --fs-144: 9rem; */
+        --fs-144: 9rem;
         --fs-64: 4rem;
         --fs-36: 2.25rem;
         --fs-28: 1.75rem;
@@ -86,7 +87,7 @@
 /*3*/
 .flex {
     display: flex;
-    flex-wrap: wrap;        /*pridejau*/
+    flex-wrap: wrap;     
     gap: var(--gap, 1rem);
 }
 
@@ -98,11 +99,31 @@
 
 /*5*/
 .container {
-    /* padding-inline: 2em; */
-    padding-inline: clamp(.6em, 2vw, 2em);
+    padding-inline: clamp(0.4em, 2vw, 2em);
     margin-inline: auto;
     max-width: 90rem;  /*buvo 73rem*/
-    /* border: 1px solid red; */
+}
+
+/* AI allow children to shrink instead of forcing overflow */
+.container > *,
+.flex > * ,
+.grid > * {
+    min-width: 0; /* allow shrinking inside flex/grid containers */
+}
+
+/* AI Ensure images and svgs don't exceed their container */
+img, svg, picture, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* AI Constrain large controls (buttons etc.) not to overflow parent */
+button,
+input,
+select,
+textarea {
+    max-width: 100%;
 }
 
 /*7*/
@@ -110,11 +131,6 @@
 .flow > *:where(:not(:first-child)) {  
     margin-top: var(--flow-space, 1.5rem);
 }
-
-/* .button__flow {
-    padding: 0.5rem 1.25rem;
-    border-radius: 999px;
-} */
 
 /*6*/
 .sr-only {
@@ -127,22 +143,22 @@
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
-  }
+}
   
-  .skip-to-content {
-      position: absolute;
-      background-color: white;
-      color: black;
-      padding: .5em 1em;
-      margin-inline: auto;
-      z-index: 1900;
-      transform: translateY(-100%);
-      transition: transform 250ms ease-in-out;
-  }
+.skip-to-content {
+    position: absolute;
+    background-color: white;
+    color: black;
+    padding: .5em 1em;
+    margin-inline: auto;
+    z-index: 1900;
+    transform: translateY(-100%);
+    transition: transform 250ms ease-in-out;
+}
   
-  .skip-to-content:focus {
-      transform: translateY(0);
-  }
+.skip-to-content:focus {
+    transform: translateY(0);
+}
 
 .darkMode {
     --clr-grey-50: 216 25% 25%; /*main*/
@@ -151,6 +167,7 @@
     --clr-grey-5001: 216 47% 78%; /*under title & above title text*/
     --clr-grey-5002: 0 100% 100%; /*moon & sun*/
     --clr-red-500: 220 38% 97%; /*Error note*/
+    --clr-white-progress: 217 23% 28%;  /* progress bar */
 }
   
  /* Colors */
@@ -193,9 +210,9 @@
 .lh-12 { line-height: var(--lh-12);}
 .lh-15 { line-height: var(--lh-15);}
 
-.fw-300 { font-weight: var(--fw-300);}
-.fw-400 { font-weight: var(--fw-400);}
-.fw-500 { font-weight: var(--fw-500);}
+.fw-300 { font-weight: var(--fw-300);} /* light */
+.fw-400 { font-weight: var(--fw-400);} /* regular */
+.fw-500 { font-weight: var(--fw-500);} /* medium */
 
 .fs-144 { font-size: var(--fs-144);}
 .fs-64 { font-size: var(--fs-64);}
@@ -203,6 +220,7 @@
 .fs-28 { font-size: var(--fs-28);}
 .fs-24 { font-size: var(--fs-24);}
 .fs-20 { font-size: var(--fs-20);}
+/* mobile font sizes: */
 /* .fs-88 { font-size: var(--fs-88);}
 .fs-40 { font-size: var(--fs-40);}
 .fs-18 { font-size: var(--fs-18);}
@@ -224,172 +242,65 @@ body {
 /* ------------------------------------ */
 /* Components                           */
 /* ------------------------------------ */
+     
+.progress__bar-container {
+    width: 100%;
+    justify-self: center;
+    padding-inline: 0;
+    margin-inline: 0;
+}
+            
+.progress__bar {
+    padding-left: 0.4rem;
+    align-items: center;
+    height: 1rem;
+    background-color: hsl(var(--clr-white-progress));
+}
 
- .component__group {
-    justify-content: center;
-    justify-items: center;
-}
-                        
-.component__container {
-    width: 70%;
-    background-color: transparent;
-   
-}
-            
-button {
-    padding: 0.5rem;
-    width: clamp(18rem, 90vw, 28rem);
-    max-height: 7rem;
-    /* border: 1px solid red; */
-}
-            
-.progress__bar-light {
-    width: clamp(15rem, 75vw, 23rem);
-}
-            
-.progress__bar-dark {
-    width: clamp(15rem, 75vw, 23rem);
+.progress {
+    height: 0.5rem;
 }
             
 .error > p {
     font-size: clamp( 1rem, 5vw, 1.125rem);
 }
             
-.subjects > * {
-    --gap: 0.7rem;
-}
-            
 .option {
-    --gap: 0.7rem;
+    --gap: clamp(1rem, 3.5vw, 2rem);
 }
-            
-.button__option {
-    width: 90%;
-    justify-content: center;
-    justify-self: center;
-}
+
+.option__tag {
+    color: hsl(var(--clr-black));
+    background-color: hsl(220 38% 97%);
+}                 
             
 .score__container {
     justify-self: center;
-    --gap: 2.5rem; /* tab:3.5rem dt:5rem */
-    padding-block: 2.5rem; /*mb:2.5rem tab:2.5rem dt:5rem*/
 }
-            
-.score__container > * {
-    width: clamp(14rem, 90vw, 25rem); /* tab:30 dt:35rem */
-    padding: 1rem; /* tab:2rem dt: 3rem; */
-    justify-items: center;
+
+
+.score__intro {
+    background-color: transparent;
+}
+
+.score__data {
+    width: 100%;
+    padding: 2rem;
+    --gap: 1rem;
+    border-radius: 0.75rem;
     box-shadow: 
         0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
-    border-radius: 1.5rem;
 }
-            
-.score__light {
-    --gap: 0.5rem; /* tab:1rem dt:1.5rem */
+
+.logo {
+    justify-content: center;
 }
-            
-.score__dark {
-    --gap: 0.5rem; /* tab:1rem dt:1.5rem */
-}
-            
-.score {
-    --gap: 0.5rem;
+               
+.score__value {
+    --gap: 1rem;
     justify-items: center;
 }
         
-@media (min-width: 35rem) {
-    .component__group {
-        display: grid;
-        grid-template-columns: 1fr;
-        max-width: 80rem;
-    }     
-    
-    button {
-        width: clamp(20rem, 90vw, 25rem);
-        /* border: 1px solid red; */
-   }
-
-    .button__option {
-        display: grid;
-        grid-template-columns: 1fr;
-        max-width: 100%;
-        justify-items: center;
-    }
-            
-    .score__container {
-        --gap: 3.5rem; /* tab:3.5rem dt:5rem */
-    }
-            
-    .score__container > * {
-        width: clamp(25rem, 5vw, 30rem); /* tab:30 dt:35rem */
-        padding: 2rem; /* tab:2rem dt: 3rem; */
-    }
-            
-    .score__light {
-        --gap: 1rem; /* tab:1rem dt:1.5rem */
-    }
-            
-    .score__dark {
-        --gap: 1rem; /* tab:1rem dt:1.5rem */
-    }
-            
-}
-        
-@media (min-width: 45rem) {
-    .container {
-        justify-items: start;
-    }
-            
-    .component__group {
-        grid-template-columns: 1fr 1fr;
-        max-width: 88rem;
-    }
-            
-    .component__container {
-        width: 100%;
-    }
-            
-    .mode__switch-light,
-    .mode__switch-dark {
-        align-self: center;
-    }
-            
-    .progress__bar-light {
-            width: clamp(15rem, 35vw, 29rem);
-    }
-            
-    .progress__bar-dark {
-        width: clamp(15rem, 35vw, 29rem);
-    }
-            
-    button {
-        width: clamp(17rem, 35vw, 35rem);
-    }
-        
-    .button__option {
-        grid-template-columns: 1fr 1fr;
-        width: 100%;
-    }
-             
-    .score__container {
-        --gap: 2.5rem; /* tab:3.5rem dt:5rem */
-        padding-block: 5rem; /*mb:2.5rem tab:2.5rem dt:5rem*/
-    }
-            
-    .score__container > * {
-        width: clamp(30rem, 5vw, 35rem); /* tab:30 dt:35rem */
-        padding: 3rem; /* tab:2rem dt: 3rem; */
-    }
-            
-    .score__light {
-        --gap: 1.5rem; /* tab:1rem dt:1.5rem */
-    }
-            
-    .score__dark {
-        --gap: 1.5rem; /* tab:1rem dt:1.5rem */
-    }
-}
-
 /*-----------------------------------*/
 /* Page specific background          */
 /* --------------------------------- */
@@ -399,6 +310,7 @@ button {
     background-position: left top;
     background-repeat: no-repeat;
     background-size: cover;
+    /* The background images use background-size: cover; — cover can crop but does not force overflow. */
 }
 
 .darkMode.container {
@@ -439,33 +351,47 @@ button {
 /* Layout                               */
 /* ------------------------------------ */
 
-body {
-    /* transition: background 0.3s, color 0.3s; */
+/* When to keep overflow-x: hidden
+   If you use it, understand it hides the symptom (scrollbar) not the cause. 
+   Use it as a final cosmetic fallback only after fixing the real causes above. */
+/* body {
     overflow-x: hidden;
-}
+} */
 
 .container { 
-    min-width: 19rem;
-    /* justify-items: space-evenly; */
+    min-width: 18rem; /* AI */
+    padding-inline: 1.5rem;
+    --gap: 0;
+    align-content: start;
 }
         
+        
+/* AI */        
 .container > * {
-    min-width: inherit;
+    min-width: 0;
 }
 
+/* ------------------------ */
+/* header                   */
+/* ------------------------ */
 .header { 
-    /* max-width: 90rem; */
+    align-content: center;
     justify-items: space-evenly;
     padding-block: 1rem;
     --gap: auto;
-    /* border: 1px solid red; */
-    /* align-self: center; */
+    max-height: 5rem;
 } 
 
 /* LOGO */
+.logo {
+    /* display: none; */
+    max-width: 100%;
+    align-items: center;
+    --gap: clamp(1rem, 3.5vw, 2rem);
+}
+
 .logo__img {
     width: clamp(2.5rem, 5vw, 3.5rem);
-    /* height: 3.5rem; */
     aspect-ratio: 1;
     border-radius: 0.5rem;
     place-content: center;
@@ -473,84 +399,48 @@ body {
     justify-items: center;
 }
 
-/* .logo_text {
-    font-size: clamp(1.125rem, 3vw, 1.75rem)
-} */
-
-.logo__light {
-    display: none;
-    max-width: 100%;
-    align-items: center;
-    --gap: 0.7rem;
-   /*  border: 1px solid green; */
-    /* padding: .5rem; */
-    /* max-height: 7rem; */
-}
-
-.logo__dark {
-    max-width: 100%;
-    --gap: 1rem;
-    padding: .7rem;
-    /* max-height: 7rem; */
-    /* --gap: 1.5rem; */
-}
-
 /* LIGHT/DARK MODE BUTTON */
-.sun, .moon {
-    width: clamp(1.2rem, 2.5vw, 1.8rem); 
-}
-
-.mode__switch-light {
-    /* max-height: 2.5em; */
+.mode__switch {
     place-self: end;
     align-self: center;
     justify-content: center;
     padding: 0.25rem; 
     gap: 0.3rem;
-    /* border: 1px solid red; */
-    margin-left: auto;
+    margin-left: auto;  /* Its let's to place element to the end/right */
 }
 
-.mode__switch-dark {
-    /* max-height: 3em; */
-    align-content: center;
-    justify-content: center;
-    /* color: white; */ /* istrinti */
-    padding: 0.5rem;  
+.sun, .moon {
+    width: clamp(1.2rem, 2.5vw, 1.8rem); 
 }
 
 /* Toggle button with all states */
 /* The switch - the box around the slider */
 .switch {
-  position: relative;
-  display: inline-block;
-  min-width: 2.5rem;
-  aspect-ratio: 2/1;
-  /* height: 2rem; */
-  /* border: 1px solid blue; */
+    position: relative;
+    display: inline-block;
+    min-width: 2.5rem;
+    aspect-ratio: 2/1;
 }
 
 /* Hide default HTML checkbox */
 .switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 /* The slider container*/
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* height: 1.75rem; */
-  width: 2rem;
-  aspect-ratio: 2/1.2;
-  /* border: 1px solid red; */
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 2rem;
+    aspect-ratio: 2/1.2;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
 }
 
 /* Oval slider */
@@ -559,7 +449,6 @@ body {
     content: "";
     top: 15%;
     bottom: 15%;
-    /* height: 1.25rem; */ 
     min-width: 0.7rem;
     aspect-ratio: 1;
     background-color: white;
@@ -569,8 +458,6 @@ body {
 
 /* Rounding sliders */
 .slider.round {
-    /* width: 3rem;
-    height: 1.75rem; */
     top: 3%;
     bottom: 3%;
     place-self: center;
@@ -581,9 +468,9 @@ body {
 
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(0.7rem); 
-  -ms-transform: translateX(0.7rem);
-  transform: translateX(0.7rem);
+    -webkit-transform: translateX(0.7rem); 
+    -ms-transform: translateX(0.7rem);
+    transform: translateX(0.7rem);
 }
 
 .slider.round:before {
@@ -619,92 +506,172 @@ button:focus-visible,
     }
 }
 
-.main__container {
-    padding-block: 2rem;
-    --gap: auto;
+/* ------------------------ */
+/* main - start menu        */
+/* ------------------------ */
+.main__container { 
+    padding-top: 2rem;
+    justify-content: center;
+    justify-items: center !important;
+}
+
+.start__intro {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .notice {
-    padding-top: 1rem; 
-   /*  border: 1px solid red; */
+    padding-block: 1rem 2.5rem; 
 }
 
-.main__container {
+/* Button with icon */
+.subjects {
+    --gap: 1rem;
+    width: 100%;
+}
+
+.subject__button {
+    width: 100%;
+    justify-items: start;
+    justify-self: center;
+    align-items: center;
+    --gap: clamp(1rem, 3.5vw, 2rem);
+    padding: 1rem;
+}
+
+.lightShadow {
+    box-shadow: 
+        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+}
+
+.darkShadow {
+    box-shadow: 
+        0 16px 40px 0px hsla(216, 25%, 25%, 0.6);
+}
+
+.subject__icon {
+    width: 3.5rem;
+    aspect-ratio: 1;
+    justify-content: center;
+    align-content: center;
+    border-radius: 0.5rem;
+}
+
+/* ----------------------- */
+/* main - question         */
+/* ----------------------- */
+
+.question__container {
+    display: none;
+}
+
+.question__intro {
+    justify-content: start;
+    width: 95%;
+}
+            
+.answer__option {
+    width: 95%;
+    --gap: 1rem;
+    background-color: transparent;
+}
+
+.question__intro > :first-child {
+    padding-bottom: 1rem;
+}
+
+.question__intro > :last-child {
+    padding-top: 1.5rem;
+}
+
+/* Progress bar */
+.progress__bar-container {
+    background-color: transparent;
+    justify-content: center;
+}
+
+.progress__bar {
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress {
+    background-color: hsl(var(--clr-purple-600));
+    width: 65%; /* set width dynamically */
+    border-radius: 999px;
+    transition: width 0.3s;
+}
+
+.answer__option {
+    padding-top: 2.5rem;
+}
+
+/* answer option */
+.option {
+    justify-items: start;
+    align-items: center;
+    margin-left: 0 !important;
+    padding: 1rem;
+}
+
+.light {
+    box-shadow: 
+        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+}
+
+.dark {
+    box-shadow: 
+        0 16px 40px 0px hsla(216, 25%, 25%, 0.6);
+}
+
+/* ------------------------- */
+/* score menu */
+/* ------------------------- */
+/* .score {
+    display: grid;
+    width: 100%;
+    --gap: 1rem;
+} */
+
+.score__container {
+    display: none;
     --gap: 2.5rem;
+    justify-self: stretch;
+    justify-content: stretch;
+}
+
+
+.score__container {
+    background-color: transparent;
+}
+
+.score__intro,
+.score__wrapper {
+    width: 100%;
+}
+
+.score__wrapper {
+    --gap: 1rem;
+}
+
+.score__container .submit__button {
+    width: 100%;
+    margin-inline: auto;
 }
 
 .attribution {
     justify-self: center;
 }
 
-.no-break {
-    white-space: nowrap;
-}
-
-@media (min-width: 35rem) {
-    .container {
-        padding-inline: 4rem;
-    }
-
-    .main__container {
-        --gap: 4rem;
-    }
-    
-    .no-break {
-        white-space: nowrap;
-    }
-}
-
-@media (min-width: 45rem) {
-    .header { 
-        /* border: 1px solid red;  */
-        /* --gap: 5rem; */
-        /* max-width: 90rem; */
-        width: 100%;
-    }
-
-    .main__container {
-        grid-template-columns: 1fr 1fr;
-        --gap: 3rem;
-    }
-    
-    .no-break {
-        white-space: wrap;
-    }
-}
-
-
-/* Progress bar */
-.progress__bar-container {
-    /* --gap: 1rem; */
-    justify-content: center;
-}
-
-.progress__bar-light {
-  height: 1rem;
-  padding: 0.25rem;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.progress__bar-dark {
-  height: 1rem;
-  padding: 0.25rem;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.progress {
-  height: 100%;
-  background-color: hsl(var(--clr-purple-600)); /* or any color */
-  width: 65%; /* set width dynamically */
-  border-radius: 6.5rem;
-  transition: width 0.3s;
-}
 
 /* Wrong answer notification */
 .error {
-    --gap: 0.19rem;
+    --gap: 0.2rem;
+    padding-top: 0.5rem;
+    place-self: center;
+    display: none;
 }
 
 .error > * {
@@ -713,19 +680,19 @@ button:focus-visible,
 
 .error img {
     width: 1.875rem;
-    /*height: 1.875rem; */
     aspect-ratio: 1;
 }
 
 /* Button submit */
 button {
     cursor: pointer;
-    /* padding: 2rem; */
     border: none;
-    border-radius: 1.5rem;
+    border-radius: 0.75rem;
 }
 
 .submit__button {
+    padding: 1rem;
+    color: hsl(0 100% 100%);
     box-shadow: 
         0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
 }
@@ -734,56 +701,6 @@ button {
     background:
         linear-gradient(hsla(0, 0%, 100%, 0.5)), hsl(var(--clr-purple-600));
 
-}
-
-/* Button with icon */
-.subjects {
-    --gap: 1rem;
-}
-
-.subject__button {
-   /*  padding: 1.5rem; */
-    justify-items: start;
-    align-items: center;
-    --gap: 1rem;
-}
-
-.lightShadow {
-    box-shadow: 
-        0 16px 40px 0px hsla(216, 25%, 25%, 0.14);
-}
-
-.darkShadow {
-    box-shadow: 
-        0 16px 40px 0px hsla(0, 0%, 100%, 0.14);
-}
-
-.subject__icon {
-    width: 3.5rem;
-    /*height: 3.5rem; */
-    aspect-ratio: 1;
-    justify-content: center;
-    align-content: center;
-    border-radius: 0.5rem;
-}
-
-/* Button option */
-.option {
-    /* padding: 1.5rem; */
-    justify-items: start;
-    align-items: center;
-    --gap: 2rem;
-    margin-left: 0 !important;
-}
-
-.option.light {
-    box-shadow: 
-        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
-}
-
-.option.dark {
-    box-shadow: 
-        0 16px 40px 0px hsla(216, 25%, 25%, 0.14);
 }
 
 .option.hover {
@@ -798,14 +715,20 @@ button {
     border: 3px solid hsl(var(--clr-red-500));
 }
 
-.button__option .option { 
-    /* width: 30rem; */
+.answer__option .option { 
     justify-content: start;
-    --gap: 0.7rem;
 }
 
 /* It let's put icon on the right side of button element
 It is very usefull code */
+.correct__icon {
+    display: none;
+}
+
+.incorrect__icon {
+    display: none;
+}
+
 .correct__icon, .incorrect__icon {
     margin-left: auto;
     width: clamp(1.5rem, 2vw, 2rem);
@@ -814,8 +737,187 @@ It is very usefull code */
 .option__tag {
     width: clamp(2.5rem, 4vw, 3.5rem ); 
     aspect-ratio: 1;
-    /* height: 3.5rem; */
     border-radius: 0.5rem;
     justify-content: center;
     align-content: center;
+}
+
+@media (min-width: 35rem) {
+
+   .main__container {
+       padding-top: 3rem;
+   }
+   
+   button {
+       border-radius: 1.5rem;
+   }
+
+   /* ------------------------ */
+   /* main- start menu         */
+   /* ------------------------ */
+   .container {
+        padding-inline: 4rem;
+    }
+    
+    .main__container {
+        width: 100%;
+    }
+    
+    .notice {
+        padding-block: 1rem 4rem;
+    }
+    
+    .subjects { 
+        width: 100%;
+        --gap: 1.5rem;
+    }
+    
+    /* -------------------------- */
+    /* main - question            */
+    /* -------------------------- */
+    .question__container {
+        width: 100%;
+    }
+
+    .question__intro > :first-child {
+        padding-bottom: 1.5rem;
+    }
+    
+    .question__intro > :last-child {
+        padding-top: 2.5rem;
+    }
+    
+    button {
+        width: 100%;
+    }
+    
+    .answer__option {
+        --gap: 1.5rem;
+        max-width: 100%;
+        justify-items: center;
+    }
+    
+    .answer__option > :last-child {
+        --flow-space: 2rem;
+    }
+    
+    .submit__button {
+        padding: 2rem;
+    }
+    
+    .error {
+        padding: 0;
+    }
+    
+    /* -------------------- */
+    /* main - score         */
+    /* -------------------- */
+    /* .score {
+        --gap: 1.5rem;
+    } */
+    
+    .score__container {
+        --gap: 4rem;
+    }
+    
+    .score__wrapper {
+        --gap: 2rem;
+    }
+    
+    .score__data {
+        padding: 3rem;
+        --gap: 2.5rem;
+        border-radius: 1.5rem;
+    }         
+}
+        
+@media (min-width: 45rem) {
+    /* ------------------------- */
+    /* main - start menu         */
+    /* ------------------------- */
+     .container {
+        padding-inline: clamp(3rem, 5vw, 8.75rem);
+        justify-items: start;
+    }
+        
+    .main__container {
+        padding: 0;
+    }
+
+     .header {
+        padding: 0;
+        padding-block: clamp(3rem, 8vw, 6rem);
+        width: 100%;
+    }
+
+    .main__container {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+        --gap: clamp(1rem, 5vw, 8rem);
+    }
+    
+    .mode__switch {
+        align-self: center;
+    }
+    
+    .notice {
+        padding-block: 3rem 0;
+    }
+    
+    .subjects {
+        justify-items: end;
+        --gap: 1rem;
+    }
+    
+    .subject__button {
+        padding: 1.5rem;
+    }
+    
+    /* ------------------------- */
+    /* main - question           */
+    /* ------------------------- */
+    .question__intro {
+        display: flex;
+        flex-direction: column;
+        max-height: 30rem;
+        gap: 1.5rem;
+    }
+    
+    .question__intro > *:not(.progress__bar-container) {
+        padding-bottom: 0;
+    }
+    
+    .progress__bar-container {
+        margin-top: auto;
+        align-self: center; 
+        width: 100%;
+        height: 5rem;
+    }
+    
+    .question__intro > :last-child {
+        padding: 0;
+    }
+    
+    .answer__option {
+        width: 100%;
+        --gap: 1rem;
+        justify-items: end;
+        padding-top: 0;
+    }
+    
+    .option {
+        padding: 1.5rem;
+    }
+             
+             
+    /* ------------------- */
+    /* main - score        */
+    /* ------------------- */
+    .score__wrapper {
+        --gap: 2rem
+    }
+    
+    .score__data {
+        padding: 3rem;
+    }
 }

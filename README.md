@@ -36,9 +36,9 @@ Your users should be able to:
 
 - [x] Create of repo (1st task)
 - [x] Create utility classes and custom properties (css design system)(2nd task)
-- [ ] Create HTML layout (3rd task)
-- [ ] Create CSS layout for mobile first (4th task)
-- [ ] Create CSS layout for tablet (5th task)
-- [ ] Craete CSS layout for desktop (6th task)
+- [x] Create HTML layout (3rd task)
+- [x] Create CSS layout for mobile first (4th task)
+- [x] Create CSS layout for tablet (5th task)
+- [x] Craete CSS layout for desktop (6th task)
 - [ ] Implement JavaScript (7th task)
 - [ ] Tada it is done. Congratulation you reach your goal 🎉🎉🎉
