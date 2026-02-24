@@ -26,93 +26,13 @@
             <div class="flex mode__switch">
                 <img class="sun" src="assets/images/icon-sun-dark.svg" alt="Sun" />
                 <label for="toggle" class="switch" id="theme-label">
-                    <input id="toggle" type="checkbox" role="switch" aria-label="Enable mode" aria-checked="false">
+                    <input id="toggle" type="checkbox" role="switch" aria-label="Enable mode">
                     <span class="slider round"></span>
                 </label>
                 <img class="moon" src="assets/images/icon-moon-dark.svg" alt="Moon" />
             </div>
     </header>
-    <main id="start__menu" class="start">
-    
-        <!-- start -->
-        <div class="grid main__container start__container">
-            <div class="start__intro" >
-                <h1 class="fs-64 fw-300 lh-1">Welcome to the <span class="fw-500">Frontend Quiz!</span></h1>
-                <p class="fs-20 lh-15 fst-italic text-grey-5001 notice">Pick up subject to get started.</p>
-            </div>
-            <div class="grid subjects">
-                <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="html" aria-label="Select HTML subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-html.svg" alt="HTML icon"></span> HTML</button>
-                <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="css" aria-label="Select CSS subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-css.svg" alt="CSS icon"></span> CSS</button>
-                <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="js" aria-label="Select JavaScript subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-js.svg" alt="JavaScript icon"></span> JavaScript</button>
-                <button class="flex bg-white fs-28 lh-1 text-blue-900 fw-500 subject__button" type="button" name="subject" value="accessibility" aria-label="Select Accessibility subject"><span class="flex bg-orange-50 subject__icon"><img src="assets/images/icon-accessibility.svg" alt="Accessibility icon"></span> Accessibility</button>
-            </div>
-        </div>
-        
-        <!-- question -->
-        <div class="grid main__container question__container">
-            <div class="question__intro">
-                <p class="fs-20 lh-15 fst-italic text-grey-5001">Question 6 of 10</p>
-                <p class="fs-36 lh-12 fw-500">Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?</p>
-                <div class="bg-grey-50 progress__bar-container">
-                    <div class="flex progress__bar bg-white">
-                        <div class="progress"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="grid bg-grey-50 answer__option">
-                <button class="flex option light bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
-                    <span class="option__tag bg-grey-50 text-grey-5001">A</span>
-                    <span class="text-blue-900 result"> 4.5 : 1</span>
-                    <img class="correct__icon" src="assets/images/icon-correct.svg" alt="correct" />
-                    <img class="incorrect__icon" src="assets/images/icon-incorrect.svg" alt="incorrect" />
-                </button>
-                <button class="flex option light bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
-                    <span class="option__tag bg-grey-50 text-grey-5001">B</span>
-                    <span class="text-blue-900 result"> 3 : 1</span>
-                    <img class="correct__icon" src="assets/images/icon-correct.svg" alt="correct" />
-                    <img class="incorrect__icon" src="assets/images/icon-incorrect.svg" alt="incorrect" />
-                <button class="flex option light bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
-                    <span class="option__tag bg-grey-50 text-grey-5001">C</span>
-                    <span class="text-blue-900 result"> 2.5 : 1</span>
-                    <img class="correct__icon" src="assets/images/icon-correct.svg" alt="correct" />
-                    <img class="incorrect__icon" src="assets/images/icon-incorrect.svg" alt="incorrect" />
-                </button>
-                <button class="flex option light bg-white fs-28 lh-1 fw-500" type="submit" name="answer" value="">
-                    <span class="option__tag bg-grey-50 text-grey-5001">D</span>
-                    <span class="text-blue-900 result"> 5 : 1</span>
-                    <img class="correct__icon" src="assets/images/icon-correct.svg" alt="correct" />
-                    <img class="incorrect__icon" src="assets/images/icon-incorrect.svg" alt="incorrect" />
-                </button>
-                <button class="fs-28 lh-1 bg-purple-600 submit__button">Submit Answer</button>
-                <div class="flex error">
-                    <img src="assets/images/icon-error.svg" alt="Error" />
-                    <p class="fs-24 text-red-500">Please select an answer</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- score -->
-         <div class="grid main__container score__container">
-            <div class="flex score__intro">
-                <h1 class="fs-64 fw-300 lh-1">Quiz completed <br/><span class="fw-500 no-break">You scored...</span></h1>
-            </div>
-            <div class="flex score__wrapper">
-            <div class="grid bg-white score__data" >
-                <div class="flex logo">
-                    <div class="logo__img bg-purple-100">
-                        <img src="assets/images/icon-accessibility.svg" alt="Accessibility icon" />
-                    </div>
-                    <p class="logo_text fs-28 fw-500 lh-1">Accessibility</p>
-                </div>
-                <div class="grid score__value" >
-                    <p class="fs-144">8</p>
-                    <p class="fs-24 text-grey-5001">out of 10</p>
-                </div>
-            </div>
-            <button class="fs-28 lh-1 bg-purple-600 submit__button">Play Again</button>
-        </div>    
-        </div>
-    </main>
+    <main id="menu" class="menu__container"></main>
     
     <footer class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 

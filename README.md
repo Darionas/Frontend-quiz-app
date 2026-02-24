@@ -1,24 +1,29 @@
-# Frontend Mentor challenge - Frontend quiz app
+# Frontend Mentor - Frontend quiz app solution
+
+This is a solution to the [Frontend quiz app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/frontend-quiz-app-BE7xkzXQnU). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
 ![Static Badge](https://img.shields.io/badge/https%3A%2F%2Fimg.shields.io%2Fbadge%2FDifficulty-intermediate-%23c99703?style=for-the-badge&logo=Frontend%20mentor&logoColor=white&label=Difficulty&labelColor=%23555555&color=%23c99703)
 
-## Welcome! 👋
 
-## Challenge based on
+## Table of contents
 
-- HTML
-- CSS
-- JavaScript
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-## Main goal for challenge
+## Overview
 
-Your challenge is to build out this quiz app and get it looking as close to the design as possible.
+### The challenge
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-We provide the data in a local `data.json` file, so use that to populate the content for the quizzes.
-
-Your users should be able to:
+Users should be able to:
 
 - Select a quiz subject
 - Select a single answer from each question from a choice of four
@@ -32,13 +37,47 @@ Your users should be able to:
 - Navigate the entire app only using their keyboard
 - **Bonus**: Change the app's theme between light and dark
 
-## Plan workflow
+### Screenshot
 
-- [x] Create of repo (1st task)
-- [x] Create utility classes and custom properties (css design system)(2nd task)
-- [x] Create HTML layout (3rd task)
-- [x] Create CSS layout for mobile first (4th task)
-- [x] Create CSS layout for tablet (5th task)
-- [x] Craete CSS layout for desktop (6th task)
-- [ ] Implement JavaScript (7th task)
-- [ ] Tada it is done. Congratulation you reach your goal 🎉🎉🎉
+![Frontend quiz app](./assets/images/frontend-quiz-app.png)
+
+### Links
+
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup
+- CSS custom properties (mobile-first workflow)
+    - Flexbox
+    - CSS Grid
+- JavaScript (fetch JSON)
+
+But created with :heart:
+
+### What I learned
+
+to work with design files
+- use custom properties and utility classes
+- To style a toggle button when it receives focus via the Tab key (keyboard navigation).
+- create light-dark mode in css and javaScript. Load mode kept in localStorage, even after page refresh or if you open that page in a while.
+
+### Continued development
+
+- Continue learning Figma to work with design files
+
+### Useful resources
+
+- [Light-Dark toggle with CSS & JS (with Kevin Powell)](https://www.youtube.com/watch?v=wodWDIdV9BY) - A look at how to create a dark mode toggle switch using CSS & JS, which saves the person's preference in localStorage for the next time they visit.
+
+## Author
+
+- Frontend Mentor - [@Darionas](https://www.frontendmentor.io/profile/Darionas)
+- GitHub - [Darionas](https://github.com/Darionas)
+
+## Acknowledgments
+
+- Thank you Frontend Mentor team for opportunity to try, practice, train yourself in different level challenges and gain invaluable experience.

@@ -1,10 +1,11 @@
 /* ---------------- */
-/* 7. Custom properties */
+
+/* Custom properties */
+
 /* ---------------- */
 
 :root {
-    
-    /* 8.Colors */
+    /* Colors */
     --clr-white: 0 100% 100%;
     --clr-white-progress: 215 0% 97%;
     --clr-black: 0 0% 0%;
@@ -28,10 +29,10 @@
     --clr-slate-700: 200 24% 40%;
     
      /* font-sizes */
-    --fs-144: 5.5rem; /* clamp(3.5rem, 6vw + 1rem, 9rem); */ /* 88 */
+    --fs-144: 5.5rem; /* 88 */
     --fs-64: 2.2rem; /* 40 */
     --fs-36: 1.25rem; /* 20 */
-    --fs-28: 1.125rem; /* 18 */
+    --fs-28: clamp(0.8rem, 5vw, 1.125rem); /* 18 */
     --fs-24: 1rem; /* 16 */
     --fs-20: 0.875rem; /* 14 */
     
@@ -55,7 +56,7 @@
 }
 
 
-@media (min-width: 35em) {
+@media (width >= 35em) {
     :root{
         --fs-144: 9rem;
         --fs-64: 3rem;
@@ -66,42 +67,44 @@
     }
 }
 
-@media (min-width: 45em) {
+@media (width >= 45em) {
     :root{
         --fs-144: 9rem;
         --fs-64: 4rem;
-        --fs-36: 2.25rem;
-        --fs-28: 1.75rem;
+        --fs-36: clamp(1.75rem, 4vw, 2.25rem);
+        --fs-28: clamp(1rem, 2vw, 1.75rem);
         --fs-24: 1.5rem;
         --fs-20: 1.25rem;
     }
 }
 
-/* --------------------------*/
-/* 1. Reset in a external file */
-/* --------------------------*/
+/* -------------------------- */
+
+/* Reset in a external file */
+
+/* -------------------------- */
 
 /* ---------------- */
-/* 2. Utility classes */
+
+/* Utility classes */
+
 /* ---------------- */
-/*3*/
+
 .flex {
     display: flex;
     flex-wrap: wrap;     
     gap: var(--gap, 1rem);
 }
 
-/*4*/
 .grid {
     display: grid;
     gap: var(--gap, 1rem);
 }
 
-/*5*/
 .container {
     padding-inline: clamp(0.4em, 2vw, 2em);
     margin-inline: auto;
-    max-width: 90rem;  /*buvo 73rem*/
+    max-width: 90rem;
 }
 
 /* AI allow children to shrink instead of forcing overflow */
@@ -126,13 +129,11 @@ textarea {
     max-width: 100%;
 }
 
-/*7*/
-/*adding spacing*/
+/* adding spacing */
 .flow > *:where(:not(:first-child)) {  
     margin-top: var(--flow-space, 1.5rem);
 }
 
-/*6*/
 .sr-only {
     position: absolute;
     width: 1px;
@@ -161,12 +162,12 @@ textarea {
 }
 
 .darkMode {
-    --clr-grey-50: 216 25% 25%; /*main*/
-    --clr-white: 215 27% 32%; /*buttons*/
-    --clr-blue-900: 0 100% 100%; /*title & buttons text*/
-    --clr-grey-5001: 216 47% 78%; /*under title & above title text*/
-    --clr-grey-5002: 0 100% 100%; /*moon & sun*/
-    --clr-red-500: 220 38% 97%; /*Error note*/
+    --clr-grey-50: 216 25% 25%; /* main */
+    --clr-white: 215 27% 32%; /* buttons */
+    --clr-blue-900: 0 100% 100%; /* title & buttons text */
+    --clr-grey-5001: 216 47% 78%; /* under title & above title text */
+    --clr-grey-5002: 0 100% 100%; /* moon & sun */
+    --clr-red-500: 220 38% 97%; /* Error note */
     --clr-white-progress: 217 23% 28%;  /* progress bar */
 }
   
@@ -203,7 +204,6 @@ textarea {
 .text-white {color: hsl(var(--clr-white));}
 
 /* typography */
-
 .fst-italic { font-style: var(--fst-italic);}
 
 .lh-1 { line-height: var(--lh-1);}
@@ -220,11 +220,6 @@ textarea {
 .fs-28 { font-size: var(--fs-28);}
 .fs-24 { font-size: var(--fs-24);}
 .fs-20 { font-size: var(--fs-20);}
-/* mobile font sizes: */
-/* .fs-88 { font-size: var(--fs-88);}
-.fs-40 { font-size: var(--fs-40);}
-.fs-18 { font-size: var(--fs-18);}
-.fs-14 { font-size: var(--fs-14);} */
 
 .upperCase { text-transform: uppercase;}
 
@@ -240,7 +235,9 @@ body {
 }
 
 /* ------------------------------------ */
+
 /* Components                           */
+
 /* ------------------------------------ */
      
 .progress__bar-container {
@@ -271,7 +268,7 @@ body {
 
 .option__tag {
     color: hsl(var(--clr-black));
-    background-color: hsl(220 38% 97%);
+    background-color: hsl(220deg 38% 97%);
 }                 
             
 .score__container {
@@ -289,7 +286,7 @@ body {
     --gap: 1rem;
     border-radius: 0.75rem;
     box-shadow: 
-        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+        0 16px 40px 0 hsl(220deg 29% 66% / 14%);
 }
 
 .logo {
@@ -301,45 +298,47 @@ body {
     justify-items: center;
 }
         
-/*-----------------------------------*/
-/* Page specific background          */
-/* --------------------------------- */
+/* ----------------------------------- */
 
+/* Page specific background          */
+
+/* --------------------------------- */
 .container {
-    background-image: url(./assets/images/pattern-background-mobile-light.svg);
+    background-image: url("./assets/images/pattern-background-mobile-light.svg");
     background-position: left top;
     background-repeat: no-repeat;
     background-size: cover;
+
     /* The background images use background-size: cover; — cover can crop but does not force overflow. */
 }
 
 .darkMode.container {
-    background-image: url(./assets/images/pattern-background-mobile-dark.svg);
+    background-image: url("./assets/images/pattern-background-mobile-dark.svg");
 }
 
-@media (min-width: 35rem) {
+@media (width >= 35rem) {
     .container {
-        background-image: url(./assets/images/pattern-background-tablet-light.svg);
+        background-image: url("./assets/images/pattern-background-tablet-light.svg");
         background-position: left top;
         background-repeat: no-repeat;
         background-size: contain;
     }
     
     .darkMode.container {
-        background-image: url(./assets/images/pattern-background-tablet-dark.svg);
+        background-image: url("./assets/images/pattern-background-tablet-dark.svg");
     }
 }
 
-@media (min-width: 45rem) {
+@media (width >= 45rem) {
     .container {
-        background-image: url(./assets/images/pattern-background-desktop-light.svg);
+        background-image: url("./assets/images/pattern-background-desktop-light.svg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
     }
     
     .darkMode.container {
-        background-image: url(./assets/images/pattern-background-desktop-dark.svg);
+        background-image: url("./assets/images/pattern-background-desktop-dark.svg");
     }
 }
 
@@ -348,31 +347,34 @@ body {
 }
 
 /* ------------------------------------ */
+
 /* Layout                               */
+
 /* ------------------------------------ */
 
 /* When to keep overflow-x: hidden
    If you use it, understand it hides the symptom (scrollbar) not the cause. 
    Use it as a final cosmetic fallback only after fixing the real causes above. */
+
 /* body {
     overflow-x: hidden;
 } */
 
 .container { 
-    min-width: 18rem; /* AI */
+    min-width: 18rem;
     padding-inline: 1.5rem;
     --gap: 0;
     align-content: start;
 }
-        
-        
-/* AI */        
+              
 .container > * {
     min-width: 0;
 }
 
 /* ------------------------ */
+
 /* header                   */
+
 /* ------------------------ */
 .header { 
     align-content: center;
@@ -384,7 +386,7 @@ body {
 
 /* LOGO */
 .logo {
-    /* display: none; */
+    display: none;
     max-width: 100%;
     align-items: center;
     --gap: clamp(1rem, 3.5vw, 2rem);
@@ -414,6 +416,7 @@ body {
 }
 
 /* Toggle button with all states */
+
 /* The switch - the box around the slider */
 .switch {
     position: relative;
@@ -429,22 +432,18 @@ body {
     height: 0;
 }
 
-/* The slider container*/
+/* The slider container */
 .slider {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     width: 2rem;
     aspect-ratio: 2/1.2;
-    -webkit-transition: 0.4s;
     transition: 0.4s;
 }
 
 /* Oval slider */
-.slider:before {
+.slider::before {
     position: absolute;
     content: "";
     top: 15%;
@@ -452,7 +451,6 @@ body {
     min-width: 0.7rem;
     aspect-ratio: 1;
     background-color: white;
-    -webkit-transition: 0.4s;
     transition: 0.4s;
 }
 
@@ -467,34 +465,34 @@ body {
 }
 
 
-input:checked + .slider:before {
-    -webkit-transform: translateX(0.7rem); 
-    -ms-transform: translateX(0.7rem);
+input:checked + .slider::before {
     transform: translateX(0.7rem);
 }
 
-.slider.round:before {
+.slider.round::before {
     border-radius: 50%;
 }
 
-.slider__dark:before {
+.slider__dark::before {
     left: 50%;
 }
 
 /* --------------------------- */
+
 /* Accessibility: Focus styles  */
+
 /* --------------------------- */
+
 /* Visible focus for keyboard users */
-button:focus-visible,
-.subject__button:focus-visible {
-    outline: 3px solid hsl(var(--clr-blue-500));
+button:focus-visible, button:hover {
+    outline: 3px solid hsl(var(--clr-purple-600));
     outline-offset: 3px;
     border-radius: 0.5rem;
 }
 
 /* When the hidden checkbox receives focus, show ring on the visible slider */
 .switch input:focus-visible + .slider {
-    box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.15);
+    box-shadow: 0 0 0 4px rgb(66 133 244 / 15%);
 }
 
 /* Respect user motion preferences */
@@ -507,11 +505,12 @@ button:focus-visible,
 }
 
 /* ------------------------ */
+
 /* main - start menu        */
+
 /* ------------------------ */
 .main__container { 
     padding-top: 2rem;
-    justify-content: center;
     justify-items: center !important;
 }
 
@@ -534,46 +533,57 @@ button:focus-visible,
 
 .subject__button {
     width: 100%;
-    justify-items: start;
+    place-items: center start;
     justify-self: center;
-    align-items: center;
-    --gap: clamp(1rem, 3.5vw, 2rem);
+    --gap: clamp(1rem, 3vw, 2rem);
     padding: 1rem;
 }
 
 .lightShadow {
     box-shadow: 
-        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+        0 16px 40px 0 hsl(220deg 29% 66% / 14%);
 }
 
 .darkShadow {
     box-shadow: 
-        0 16px 40px 0px hsla(216, 25%, 25%, 0.6);
+        0 16px 40px 0 hsl(216deg 25% 25% / 60%);
 }
 
 .subject__icon {
     width: 3.5rem;
     aspect-ratio: 1;
-    justify-content: center;
-    align-content: center;
+    place-content: center center;
     border-radius: 0.5rem;
 }
 
 /* ----------------------- */
+
 /* main - question         */
+
 /* ----------------------- */
 
 .question__container {
+    gap: 1rem;
+    width: 100%;
+}
+
+.visi { display: flex;}
+
+.open {
+    display: grid;
+}
+
+.closed {
     display: none;
 }
 
 .question__intro {
     justify-content: start;
-    width: 95%;
+    width: 100%;
 }
-            
-.answer__option {
-    width: 95%;
+
+.options {
+    width: 100%;
     --gap: 1rem;
     background-color: transparent;
 }
@@ -599,44 +609,46 @@ button:focus-visible,
 
 .progress {
     background-color: hsl(var(--clr-purple-600));
-    width: 65%; /* set width dynamically */
     border-radius: 999px;
     transition: width 0.3s;
 }
 
-.answer__option {
+.options {
     padding-top: 2.5rem;
 }
 
 /* answer option */
+.answer__option {
+    justify-self: end;
+    gap: 1rem;
+}
+
 .option {
-    justify-items: start;
-    align-items: center;
+    place-items: center start;
     margin-left: 0 !important;
     padding: 1rem;
 }
 
 .light {
     box-shadow: 
-        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+        0 16px 40px 0 hsl(220deg 29% 66% / 14%);
 }
 
 .dark {
     box-shadow: 
-        0 16px 40px 0px hsla(216, 25%, 25%, 0.6);
+        0 16px 40px 0 hsl(216deg 25% 25% / 60%);
+}
+
+.question__container > * {
+    width: 100%;
 }
 
 /* ------------------------- */
-/* score menu */
-/* ------------------------- */
-/* .score {
-    display: grid;
-    width: 100%;
-    --gap: 1rem;
-} */
 
+/* score menu */
+
+/* ------------------------- */
 .score__container {
-    display: none;
     --gap: 2.5rem;
     justify-self: stretch;
     justify-content: stretch;
@@ -687,20 +699,25 @@ button:focus-visible,
 button {
     cursor: pointer;
     border: none;
-    border-radius: 0.75rem;
+    border-radius: 0.75rem;    
 }
 
 .submit__button {
     padding: 1rem;
-    color: hsl(0 100% 100%);
+    color: hsl(0deg 100% 100%);
     box-shadow: 
-        0 16px 40px 0px hsla(220, 29%, 66%, 0.14);
+        0 16px 40px 0 hsl(220deg 29% 66% / 14%);
 }
 
 .submit__button.active {
     background:
-        linear-gradient(hsla(0, 0%, 100%, 0.5)), hsl(var(--clr-purple-600));
+        linear-gradient(hsl(0deg 0% 100% / 50%)), hsl(var(--clr-purple-600));
+}
 
+.option {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
 }
 
 .option.hover {
@@ -712,10 +729,10 @@ button {
 }
 
 .option.incorrect__answer {
-    border: 3px solid hsl(var(--clr-red-500));
+    border: 3px solid hsl(0deg 82% 63%);
 }
 
-.answer__option .option { 
+.options .option { 
     justify-content: start;
 }
 
@@ -729,6 +746,14 @@ It is very usefull code */
     display: none;
 }
 
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
 .correct__icon, .incorrect__icon {
     margin-left: auto;
     width: clamp(1.5rem, 2vw, 2rem);
@@ -738,14 +763,22 @@ It is very usefull code */
     width: clamp(2.5rem, 4vw, 3.5rem ); 
     aspect-ratio: 1;
     border-radius: 0.5rem;
-    justify-content: center;
-    align-content: center;
+    place-content: center center;
+    background-color: hsl(220deg 38% 97%);
 }
 
-@media (min-width: 35rem) {
+.option__text {
+    text-align: left;
+}
 
+.result {
+    text-align: left;
+}
+
+@media (width >= 35rem) {
    .main__container {
        padding-top: 3rem;
+       width: 80vw;
    }
    
    button {
@@ -753,14 +786,12 @@ It is very usefull code */
    }
 
    /* ------------------------ */
+
    /* main- start menu         */
+
    /* ------------------------ */
    .container {
         padding-inline: 4rem;
-    }
-    
-    .main__container {
-        width: 100%;
     }
     
     .notice {
@@ -773,12 +804,10 @@ It is very usefull code */
     }
     
     /* -------------------------- */
-    /* main - question            */
-    /* -------------------------- */
-    .question__container {
-        width: 100%;
-    }
 
+    /* main - question            */
+
+    /* -------------------------- */
     .question__intro > :first-child {
         padding-bottom: 1.5rem;
     }
@@ -791,13 +820,12 @@ It is very usefull code */
         width: 100%;
     }
     
-    .answer__option {
+    .options {
         --gap: 1.5rem;
-        max-width: 100%;
         justify-items: center;
     }
     
-    .answer__option > :last-child {
+    .options > :last-child {
         --flow-space: 2rem;
     }
     
@@ -810,12 +838,10 @@ It is very usefull code */
     }
     
     /* -------------------- */
+
     /* main - score         */
+
     /* -------------------- */
-    /* .score {
-        --gap: 1.5rem;
-    } */
-    
     .score__container {
         --gap: 4rem;
     }
@@ -831,29 +857,31 @@ It is very usefull code */
     }         
 }
         
-@media (min-width: 45rem) {
+@media (width >= 45rem) {
     /* ------------------------- */
+
     /* main - start menu         */
+
     /* ------------------------- */
      .container {
         padding-inline: clamp(3rem, 5vw, 8.75rem);
-        justify-items: start;
-    }
-        
-    .main__container {
-        padding: 0;
     }
 
      .header {
         padding: 0;
-        padding-block: clamp(3rem, 8vw, 6rem);
+        padding-block: clamp(3rem, 4vw, 6rem);
         width: 100%;
     }
 
     .main__container {
         grid-template-columns: 1fr 1fr;
-        width: 100%;
         --gap: clamp(1rem, 5vw, 8rem);
+        padding-top: 1rem;
+        width: 100%;
+    }
+
+    .question__container { 
+        gap: clamp(1rem, 7vw, 10rem); 
     }
     
     .mode__switch {
@@ -865,8 +893,9 @@ It is very usefull code */
     }
     
     .subjects {
-        justify-items: end;
+        justify-items: center;
         --gap: 1rem;
+        width: 100%;
     }
     
     .subject__button {
@@ -874,12 +903,14 @@ It is very usefull code */
     }
     
     /* ------------------------- */
+
     /* main - question           */
-    /* ------------------------- */
+
+    /* ------------------------- */    
     .question__intro {
         display: flex;
         flex-direction: column;
-        max-height: 30rem;
+        max-height: inherit;
         gap: 1.5rem;
     }
     
@@ -889,29 +920,27 @@ It is very usefull code */
     
     .progress__bar-container {
         margin-top: auto;
-        align-self: center; 
-        width: 100%;
-        height: 5rem;
+        height: 7rem;
     }
     
     .question__intro > :last-child {
         padding: 0;
     }
     
-    .answer__option {
-        width: 100%;
+    .options {
         --gap: 1rem;
         justify-items: end;
         padding-top: 0;
     }
     
     .option {
-        padding: 1.5rem;
+        padding: 1.25rem;
     }
-             
-             
+                          
     /* ------------------- */
+
     /* main - score        */
+
     /* ------------------- */
     .score__wrapper {
         --gap: 2rem
