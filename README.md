@@ -43,8 +43,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Frontend quiz app UI solution](https://github.com/Darionas/Frontend-quiz-app)
+- Live Site URL: [Frontend quiz app UI live site](https://darionas.github.io/Frontend-quiz-app/)
 
 ## My process
 
